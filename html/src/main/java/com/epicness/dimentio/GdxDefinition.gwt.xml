@@ -4,7 +4,7 @@
   <source path="" />
   <inherits name="com.badlogic.gdx.backends.gdx_backends_gwt" />
   <inherits name="com.badlogic.gdx.physics.box2d.box2d-gwt" />
-  <inherits name="com.epicness.dimentio.DimentioGame" />
+  <inherits name="com.epicness.DimentioGame" />
   <inherits name="space.earlygrey.shapedrawer" />
   <entry-point class="com.epicness.dimentio.gwt.GwtLauncher" />
   <set-configuration-property name="gdx.assetpath" value="../assets" />
