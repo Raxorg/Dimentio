@@ -15,6 +15,10 @@ public class GameAssets extends Assets {
 
     private Sprite fadedCircularGlow;
 
+    private Sprite leaf1Border;
+
+    private Sprite leaf1Inner;
+
     public GameAssets() {
         super(ASSETS);
     }
@@ -25,6 +29,8 @@ public class GameAssets extends Assets {
         KOLMOSTCountingDownTheHours = get(KOLMOSTCOUNTINGDOWNTHEHOURS_MUSIC);
         KOLMOSTTitle = get(KOLMOSTTITLE_MUSIC);
         fadedCircularGlow = get(FADEDCIRCULARGLOW_SPRITE);
+        leaf1Border = get(LEAF1BORDER_SPRITE);
+        leaf1Inner = get(LEAF1INNER_SPRITE);
     }
 
     public Music getKOLMOSTASecondChance() {
@@ -41,5 +47,13 @@ public class GameAssets extends Assets {
 
     public Sprite getFadedCircularGlow() {
         return fadedCircularGlow;
+    }
+
+    public Sprite getLeaf1Border() {
+        return leaf1Border;
+    }
+
+    public Sprite getLeaf1Inner() {
+        return leaf1Inner;
     }
 }

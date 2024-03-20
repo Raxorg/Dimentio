@@ -17,11 +17,17 @@ public class GameAssetPaths {
 
     public static final AssetDescriptor<Sprite> FADEDCIRCULARGLOW_SPRITE;
 
+    public static final AssetDescriptor<Sprite> LEAF1BORDER_SPRITE;
+
+    public static final AssetDescriptor<Sprite> LEAF1INNER_SPRITE;
+
     static {
         ASSETS = new ArrayList<>();
         ASSETS.add(KOLMOSTASECONDCHANCE_MUSIC = new AssetDescriptor<>("dimentio/game/audios/music/KOLMOSTASecondChance.mogg", Music.class));
         ASSETS.add(KOLMOSTCOUNTINGDOWNTHEHOURS_MUSIC = new AssetDescriptor<>("dimentio/game/audios/music/KOLMOSTCountingDownTheHours.mogg", Music.class));
         ASSETS.add(KOLMOSTTITLE_MUSIC = new AssetDescriptor<>("dimentio/game/audios/music/KOLMOSTTitle.mogg", Music.class));
         ASSETS.add(FADEDCIRCULARGLOW_SPRITE = new AssetDescriptor<>("dimentio/game/images/fadedCircularGlow.png", Sprite.class));
+        ASSETS.add(LEAF1BORDER_SPRITE = new AssetDescriptor<>("dimentio/game/images/leaf1Border.png", Sprite.class));
+        ASSETS.add(LEAF1INNER_SPRITE = new AssetDescriptor<>("dimentio/game/images/leaf1Inner.png", Sprite.class));
     }
 }

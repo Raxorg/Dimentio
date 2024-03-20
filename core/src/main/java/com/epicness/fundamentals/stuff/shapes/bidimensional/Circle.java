@@ -51,6 +51,10 @@ public class Circle implements Movable {
         this(radius, new Color(1f, 1f, 1f, 1f));
     }
 
+    public Circle(Color color) {
+        this(5f, color);
+    }
+
     public Circle() {
         this(5f);
     }
@@ -111,6 +115,10 @@ public class Circle implements Movable {
     @Override
     public void translateY(float amount) {
         y += amount;
+    }
+
+    public void setRadius(float radius) {
+        this.radius = radius;
     }
 
     public Color getBorderColor() {

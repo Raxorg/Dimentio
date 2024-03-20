@@ -18,6 +18,7 @@ public class Player implements Movable {
     private final Circle circle;
     private final Sprited glow;
     private final Vector2 speed;
+    private final Color baseColor;
 
     public Player(Sprite glowSprite) {
         circle = new Circle(PLAYER_INNER_RADIUS, BLACK);
@@ -28,6 +29,8 @@ public class Player implements Movable {
         glow.setOriginBasedPosition(circle.x, circle.y);
 
         speed = new Vector2();
+
+        baseColor = new Color();
     }
 
     public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawer) {
@@ -57,6 +60,10 @@ public class Player implements Movable {
         glow.translateY(amount);
     }
 
+    public Vector2 getCenter(Vector2 aux) {
+        return circle.getCenter(aux);
+    }
+
     public float getEndX() {
         return glow.getEndX();
     }
@@ -65,11 +72,19 @@ public class Player implements Movable {
         return speed;
     }
 
-    public Color getColor() {
+    public Color getGlowColor() {
         return glow.getColor();
     }
 
-    public void setColor(Color color) {
+    public void setGlowColor(Color color) {
         glow.setColor(color);
+    }
+
+    public Color getBaseColor() {
+        return baseColor;
+    }
+
+    public void setBaseColor(Color color) {
+        baseColor.set(color);
     }
 }
