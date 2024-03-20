@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.dimentio.game.logic.GameLogicHandler;
 import com.epicness.fundamentals.stuff.DualSprited;
-import com.epicness.fundamentals.utils.Random;
 
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class FoliageHandler extends GameLogicHandler {
 
                 leaf.setFlip(MathUtils.randomBoolean(), MathUtils.randomBoolean());
 
-                color.set(Random.fromArray(FOLIAGE_COLORS));
+                color.set(FOLIAGE_COLORS.random());
                 leaf.setForegroundColor(color);
                 leaf.setBackgroundColor(color.lerp(CLEAR, 0.4f));
 

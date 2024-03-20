@@ -2,27 +2,38 @@ package com.epicness.dimentio.game.logic.player;
 
 import static com.epicness.dimentio.game.GameConstants.WORLD_WIDTH_2D;
 
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.SnapshotArray;
 import com.epicness.dimentio.game.logic.GameLogicHandler;
-import com.epicness.dimentio.game.stuff.bidimensional.Player;
+import com.epicness.fundamentals.stuff.interfaces.Movable;
+import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
 public class MirrorHandler extends GameLogicHandler {
 
-    private Player player, playerMirror;
+    private Array<Transformable> originals, mirrors;
 
     @Override
     protected void init() {
-        player = stuff.getWorld2D().getPlayer();
-        playerMirror = stuff.getWorld2D().getPlayerMirror();
+        originals = new SnapshotArray<>();
+        originals.add(stuff.getWorld2D().getPlayer());
+
+        mirrors = new SnapshotArray<>();
+        mirrors.add(stuff.getWorld2D().getPlayerMirror());
     }
 
     @Override
     protected void update(float delta) {
-        if (player.getEndX() >= WORLD_WIDTH_2D) {
-            player.setX(player.getX() - WORLD_WIDTH_2D);
+        Transformable original, mirror;
+        for (int i = 0; i < originals.size; i++) {
+            original = originals.get(i);
+            mirror = mirrors.get(i);
+            if (original.getEndX() >= WORLD_WIDTH_2D) {
+                original.setX(original.getX() - WORLD_WIDTH_2D);
+            }
+            if (original.getEndX() <= 0f) {
+                original.setX(original.getX() + WORLD_WIDTH_2D);
+            }
+            mirror.setPosition(original.getX() + WORLD_WIDTH_2D, original.getY());
         }
-        if (player.getEndX() <= 0f) {
-            player.setX(player.getX() + WORLD_WIDTH_2D);
-        }
-        playerMirror.setPosition(player.getX() + WORLD_WIDTH_2D, player.getY());
     }
 }

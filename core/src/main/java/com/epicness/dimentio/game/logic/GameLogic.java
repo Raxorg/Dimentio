@@ -1,5 +1,6 @@
 package com.epicness.dimentio.game.logic;
 
+import com.epicness.dimentio.game.logic.enemies.EnemySpawner;
 import com.epicness.dimentio.game.logic.other.CameraHandler;
 import com.epicness.dimentio.game.logic.other.FoliageHandler;
 import com.epicness.dimentio.game.logic.other.MusicHandler;
@@ -11,6 +12,8 @@ import com.epicness.fundamentals.logic.Logic;
 
 public class GameLogic extends Logic {
 
+    // Enemies
+    private final EnemySpawner enemySpawner;
     // Other
     private final CameraHandler cameraHandler;
     private final FoliageHandler foliageHandler;
@@ -22,6 +25,8 @@ public class GameLogic extends Logic {
     private final MovementHandler movementHandler;
 
     public GameLogic() {
+        // Enemies
+        registerHandler(enemySpawner = new EnemySpawner());
         // Other
         registerHandler(cameraHandler = new CameraHandler());
         registerHandler(foliageHandler = new FoliageHandler());
@@ -35,6 +40,8 @@ public class GameLogic extends Logic {
 
     @Override
     public void update() {
+        // Enemies
+        enemySpawner.update();
         // Player
         glowHandler.update();
         movementHandler.update();

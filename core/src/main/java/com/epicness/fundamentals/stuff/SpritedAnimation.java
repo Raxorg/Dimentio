@@ -10,8 +10,9 @@ import com.badlogic.gdx.math.Rectangle;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
 import com.epicness.fundamentals.stuff.interfaces.Movable;
+import com.epicness.fundamentals.stuff.interfaces.Rotatable;
 
-public class SpritedAnimation implements Buttonable, Movable {
+public class SpritedAnimation implements Buttonable, Movable, Rotatable {
 
     private final Animation<Sprited> animation;
     private float time;
@@ -77,6 +78,18 @@ public class SpritedAnimation implements Buttonable, Movable {
         }
     }
 
+    @Override
+    public float getRotation() {
+        return animation.getKeyFrame(time).getRotation();
+    }
+
+    @Override
+    public void rotate(float degrees) {
+        for (int i = 0; i < animation.getKeyFrames().length; i++) {
+            animation.getKeyFrames()[i].rotate(degrees);
+        }
+    }
+
     public void setOriginBasedPosition(float x, float y) {
         for (int i = 0; i < animation.getKeyFrames().length; i++) {
             animation.getKeyFrames()[i].setOriginBasedPosition(x, y);
@@ -87,8 +100,20 @@ public class SpritedAnimation implements Buttonable, Movable {
         return animation.getKeyFrame(time).getWidth();
     }
 
+    public void setWidth(float width) {
+        for (int i = 0; i < animation.getKeyFrames().length; i++) {
+            animation.getKeyFrames()[i].setWidth(width);
+        }
+    }
+
     public float getHeight() {
         return animation.getKeyFrame(time).getHeight();
+    }
+
+    public void setHeight(float height) {
+        for (int i = 0; i < animation.getKeyFrames().length; i++) {
+            animation.getKeyFrames()[i].setHeight(height);
+        }
     }
 
     public void setSize(float width, float height) {

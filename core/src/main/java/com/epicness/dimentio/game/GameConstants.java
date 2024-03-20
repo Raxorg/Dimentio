@@ -1,17 +1,16 @@
 package com.epicness.dimentio.game;
 
-import static com.badlogic.gdx.graphics.Color.GREEN;
 import static com.badlogic.gdx.graphics.Color.ORANGE;
 import static com.badlogic.gdx.graphics.Color.PURPLE;
-import static com.badlogic.gdx.graphics.Color.YELLOW;
+import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.LIGHT_GRASS;
 import static com.epicness.fundamentals.constants.SharedConstants.RATIO;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.Array;
 
 public class GameConstants {
 
@@ -36,6 +35,11 @@ public class GameConstants {
     public static final float MIN_PLAYER_Y = BORDER_HEIGHT + PLAYER_INNER_RADIUS;
     public static final float MAX_PLAYER_Y = CAMERA_HEIGHT - BORDER_HEIGHT - PLAYER_INNER_RADIUS;
 
+    // Enemies
+    public static final float ENEMY_SIZE = 150f;
+    public static final float ENEMY_SPAWN_INTERVAL = 3f;
+    public static final float ENEMY_SPAWN_Y = CAMERA_HALF_HEIGHT - ENEMY_SIZE / 2f;
+
     // Foliage
-    public static final Color[] FOLIAGE_COLORS = new Color[]{ORANGE, PURPLE, GRASS};
+    public static final Array<Color> FOLIAGE_COLORS = Array.with(ORANGE, PURPLE, GRASS);
 }

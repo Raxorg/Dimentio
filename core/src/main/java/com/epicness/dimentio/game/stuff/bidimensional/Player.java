@@ -10,10 +10,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.Sprited;
-import com.epicness.fundamentals.stuff.interfaces.Movable;
+import com.epicness.fundamentals.stuff.interfaces.Transformable;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
 
-public class Player implements Movable {
+public class Player implements Transformable {
 
     private final Circle circle;
     private final Sprited glow;
@@ -60,12 +60,38 @@ public class Player implements Movable {
         glow.translateY(amount);
     }
 
-    public Vector2 getCenter(Vector2 aux) {
-        return circle.getCenter(aux);
+    @Override
+    public float getRotation() {
+        throw new UnsupportedOperationException();
     }
 
-    public float getEndX() {
-        return glow.getEndX();
+    @Override
+    public void rotate(float degrees) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void stretchWidth(float amount) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void stretchHeight(float amount) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public float getWidth() {
+        return glow.getWidth();
+    }
+
+    @Override
+    public float getHeight() {
+        return glow.getHeight();
+    }
+
+    public Vector2 getCenter(Vector2 aux) {
+        return circle.getCenter(aux);
     }
 
     public Vector2 getSpeed() {

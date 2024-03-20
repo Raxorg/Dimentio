@@ -7,6 +7,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.epicness.fundamentals.assets.Assets;
 
 public class GameAssets extends Assets {
+    private Sprite[] enemyAnimFrames;
+
+    private Sprite enemyFrames;
+
     private Music KOLMOSTASecondChance;
 
     private Music KOLMOSTCountingDownTheHours;
@@ -25,12 +29,22 @@ public class GameAssets extends Assets {
 
     @Override
     public void initializeAssets() {
+        enemyAnimFrames = get(ENEMYANIMFRAMES_ANIMATION);
+        enemyFrames = get(ENEMYFRAMES_SPRITE);
         KOLMOSTASecondChance = get(KOLMOSTASECONDCHANCE_MUSIC);
         KOLMOSTCountingDownTheHours = get(KOLMOSTCOUNTINGDOWNTHEHOURS_MUSIC);
         KOLMOSTTitle = get(KOLMOSTTITLE_MUSIC);
         fadedCircularGlow = get(FADEDCIRCULARGLOW_SPRITE);
         leaf1Border = get(LEAF1BORDER_SPRITE);
         leaf1Inner = get(LEAF1INNER_SPRITE);
+    }
+
+    public Sprite[] getEnemyAnimFrames() {
+        return enemyAnimFrames;
+    }
+
+    public Sprite getEnemyFrames() {
+        return enemyFrames;
     }
 
     public Music getKOLMOSTASecondChance() {
