@@ -1,7 +1,6 @@
 package com.epicness.dimentio.game.stuff;
 
 import com.epicness.dimentio.game.assets.GameAssets;
-import com.epicness.dimentio.game.stuff.bidimensional.Player;
 import com.epicness.dimentio.game.stuff.bidimensional.World2D;
 import com.epicness.dimentio.game.stuff.tridimensional.World3D;
 import com.epicness.fundamentals.stuff.Stuff;
@@ -13,7 +12,7 @@ public class GameStuff extends Stuff<GameAssets> {
 
     @Override
     public void initializeStuff() {
-        world2D = new World2D(sharedAssets);
+        world2D = new World2D(sharedAssets, assets);
         world3D = new World3D(world2D);
     }
 

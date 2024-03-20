@@ -4,6 +4,8 @@ import static com.badlogic.gdx.Input.Keys.A;
 import static com.badlogic.gdx.Input.Keys.D;
 import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.W;
+import static com.epicness.dimentio.game.GameConstants.PLAYER_X_SPEED;
+import static com.epicness.dimentio.game.GameConstants.PLAYER_Y_SPEED;
 
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.dimentio.game.logic.GameLogicHandler;
@@ -30,16 +32,16 @@ public class MovementHandler extends GameLogicHandler {
     public void keyDown(int keycode) {
         switch (keycode) {
             case W:
-                player.getSpeed().y += 100f;
+                player.getSpeed().y += PLAYER_Y_SPEED;
                 break;
             case A:
-                player.getSpeed().x -= 100f;
+                player.getSpeed().x -= PLAYER_X_SPEED;
                 break;
             case S:
-                player.getSpeed().y -= 100f;
+                player.getSpeed().y -= PLAYER_Y_SPEED;
                 break;
             case D:
-                player.getSpeed().x += 100f;
+                player.getSpeed().x += PLAYER_X_SPEED;
                 break;
         }
     }
@@ -48,16 +50,16 @@ public class MovementHandler extends GameLogicHandler {
     public void keyUp(int keycode) {
         switch (keycode) {
             case W:
-                player.getSpeed().y -= 100f;
+                player.getSpeed().y -= PLAYER_Y_SPEED;
                 break;
             case A:
-                player.getSpeed().x += 100f;
+                player.getSpeed().x += PLAYER_X_SPEED;
                 break;
             case S:
-                player.getSpeed().y += 100f;
+                player.getSpeed().y += PLAYER_Y_SPEED;
                 break;
             case D:
-                player.getSpeed().x -= 100f;
+                player.getSpeed().x -= PLAYER_X_SPEED;
                 break;
         }
     }

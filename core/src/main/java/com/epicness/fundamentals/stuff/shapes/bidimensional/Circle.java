@@ -18,9 +18,13 @@ public class Circle implements Movable {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.borderColor = borderColor;
-        this.fillColor = fillColor;
+        this.borderColor = new Color(borderColor);
+        this.fillColor = new Color(fillColor);
         thickness = 1f;
+    }
+
+    public Circle(float radius, Color borderColor, Color fillColor) {
+        this(0f, 0f, radius, borderColor, fillColor);
     }
 
     public Circle(float x, float y, float radius, Color color) {
@@ -113,8 +117,16 @@ public class Circle implements Movable {
         return borderColor;
     }
 
+    public void setBorderColor(Color color) {
+        borderColor.set(color);
+    }
+
     public Color getFillColor() {
         return fillColor;
+    }
+
+    public void setFillColor(Color color) {
+        fillColor.set(color);
     }
 
     public void setColor(Color color) {

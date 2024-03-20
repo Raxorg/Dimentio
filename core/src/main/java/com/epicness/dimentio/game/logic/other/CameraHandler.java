@@ -40,22 +40,26 @@ public class CameraHandler extends GameLogicHandler {
 
     @Override
     public void update(float delta) {
-        deltaX = player.getX() - lastPlayerX;
-        rotateX(deltaX);
-
-        deltaY = lastPlayerY - player.getY();
-        deltaY = MathUtils.map(0f, CAMERA_HEIGHT, 0f, 45f, deltaY);
-        cameraDirection.set(camera.direction);
-        camera.rotateAround(Vector3.Zero, cameraDirection.crs(Vector3.Y), deltaY);
+        rotateX();
+        //rotateY();
         camera.update();
 
         lastPlayerX = player.getX();
         lastPlayerY = player.getY();
     }
 
-    private void rotateX(float delta) {
-        delta = MathUtils.map(0f, CAMERA_WIDTH, 0f, 45f, delta);
-        camera.rotateAround(Vector3.Zero, Vector3.Y, delta);
+    private void rotateX() {
+        deltaX = player.getX() - lastPlayerX;
+        deltaX = MathUtils.map(0f, CAMERA_WIDTH, 0f, 45f, deltaX);
+        camera.rotateAround(Vector3.Zero, Vector3.Y, deltaX);
+    }
+
+    private void rotateY() {
+        deltaY = lastPlayerY - player.getY();
+        deltaY = MathUtils.map(0f, CAMERA_HEIGHT, 0f, 45f, deltaY);
+        System.out.println(deltaY);
+        cameraDirection.set(camera.direction);
+        camera.rotateAround(Vector3.Zero, cameraDirection.crs(Vector3.Y), deltaY);
     }
 
     @Override

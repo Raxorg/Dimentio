@@ -3,6 +3,7 @@ package com.epicness.dimentio.game.assets;
 import static com.epicness.dimentio.game.assets.GameAssetPaths.*;
 
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.epicness.fundamentals.assets.Assets;
 
 public class GameAssets extends Assets {
@@ -11,6 +12,8 @@ public class GameAssets extends Assets {
     private Music KOLMOSTCountingDownTheHours;
 
     private Music KOLMOSTTitle;
+
+    private Sprite fadedCircularGlow;
 
     public GameAssets() {
         super(ASSETS);
@@ -21,6 +24,7 @@ public class GameAssets extends Assets {
         KOLMOSTASecondChance = get(KOLMOSTASECONDCHANCE_MUSIC);
         KOLMOSTCountingDownTheHours = get(KOLMOSTCOUNTINGDOWNTHEHOURS_MUSIC);
         KOLMOSTTitle = get(KOLMOSTTITLE_MUSIC);
+        fadedCircularGlow = get(FADEDCIRCULARGLOW_SPRITE);
     }
 
     public Music getKOLMOSTASecondChance() {
@@ -33,5 +37,9 @@ public class GameAssets extends Assets {
 
     public Music getKOLMOSTTitle() {
         return KOLMOSTTitle;
+    }
+
+    public Sprite getFadedCircularGlow() {
+        return fadedCircularGlow;
     }
 }

@@ -4,6 +4,7 @@ import static com.badlogic.gdx.graphics.Color.BLACK;
 import static com.epicness.dimentio.game.GameConstants.PLAYER_DIAMETER;
 import static com.epicness.dimentio.game.GameConstants.PLAYER_INNER_RADIUS;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -62,5 +63,13 @@ public class Player implements Movable {
 
     public Vector2 getSpeed() {
         return speed;
+    }
+
+    public Color getColor() {
+        return glow.getColor();
+    }
+
+    public void setColor(Color color) {
+        glow.setColor(color);
     }
 }
