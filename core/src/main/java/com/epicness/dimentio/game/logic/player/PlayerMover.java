@@ -16,7 +16,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.epicness.dimentio.game.logic.GameLogicHandler;
 import com.epicness.dimentio.game.stuff.bidimensional.Player;
 
-public class MovementHandler extends GameLogicHandler {
+public class PlayerMover extends GameLogicHandler {
 
     private Player player;
     private Vector2 aux;

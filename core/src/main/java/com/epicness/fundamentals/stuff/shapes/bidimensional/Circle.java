@@ -4,11 +4,11 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
-import com.epicness.fundamentals.stuff.interfaces.Movable;
+import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-public class Circle implements Movable {
+public class Circle implements Transformable {
 
     public float x, y, radius;
     private final Color borderColor, fillColor;
@@ -77,6 +77,14 @@ public class Circle implements Movable {
         shapeRenderer.circle(x, y, radius);
     }
 
+    public boolean overlaps(Circle other) {
+        float dx = x - other.x;
+        float dy = y - other.y;
+        float distance = dx * dx + dy * dy;
+        float radiusSum = radius + other.radius;
+        return distance < radiusSum * radiusSum;
+    }
+
     public float getStartX() {
         return x - radius;
     }
@@ -115,6 +123,36 @@ public class Circle implements Movable {
     @Override
     public void translateY(float amount) {
         y += amount;
+    }
+
+    @Override
+    public float getRotation() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void rotate(float degrees) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void stretchWidth(float amount) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void stretchHeight(float amount) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public float getWidth() {
+        return radius * 2f;
+    }
+
+    @Override
+    public float getHeight() {
+        return radius * 2f;
     }
 
     public void setRadius(float radius) {

@@ -106,6 +106,10 @@ public class Player implements Transformable {
         glow.setColor(color);
     }
 
+    public void setCircleColor(Color color) {
+        circle.setFillColor(color);
+    }
+
     public Color getBaseColor() {
         return baseColor;
     }

@@ -1,5 +1,9 @@
 package com.epicness.dimentio.game.stuff.bidimensional;
 
+import static com.badlogic.gdx.graphics.Color.CLEAR;
+import static com.badlogic.gdx.graphics.Color.GREEN;
+import static com.epicness.dimentio.game.GameConstants.ENEMY_SIZE;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
@@ -13,8 +17,12 @@ public class Enemy implements Transformable {
     private final Circle bounds;
 
     public Enemy(Sprite[] frames) {
-        animation = new SpritedAnimation(0.2f, frames);
-        bounds = new Circle();
+        animation = new SpritedAnimation(0.2f, true, frames);
+        animation.setSize(ENEMY_SIZE);
+        animation.setOriginCenter();
+
+        bounds = new Circle(ENEMY_SIZE / 2f, GREEN, CLEAR);
+        bounds.translate(ENEMY_SIZE / 2f);
     }
 
     public void draw(SpriteBatch spriteBatch) {
@@ -67,12 +75,12 @@ public class Enemy implements Transformable {
 
     @Override
     public void stretchWidth(float amount) {
-        animation.setWidth(animation.getWidth() + amount);
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void stretchHeight(float amount) {
-        animation.setHeight(animation.getHeight() + amount);
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -83,5 +91,9 @@ public class Enemy implements Transformable {
     @Override
     public float getHeight() {
         return animation.getHeight();
+    }
+
+    public void setFlipY(boolean flip) {
+        animation.setFlipY(flip);
     }
 }

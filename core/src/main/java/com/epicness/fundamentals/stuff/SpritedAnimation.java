@@ -1,6 +1,7 @@
 package com.epicness.fundamentals.stuff;
 
 import static com.badlogic.gdx.graphics.g2d.Animation.PlayMode.LOOP;
+import static com.badlogic.gdx.graphics.g2d.Animation.PlayMode.NORMAL;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -17,12 +18,17 @@ public class SpritedAnimation implements Buttonable, Movable, Rotatable {
     private final Animation<Sprited> animation;
     private float time;
 
-    public SpritedAnimation(float frameDuration, Sprite... spriteFrames) {
+    public SpritedAnimation(float frameDuration, boolean looping, Sprite... spriteFrames) {
         Sprited[] animationFrames = new Sprited[spriteFrames.length];
         for (int i = 0; i < spriteFrames.length; i++) {
             animationFrames[i] = new Sprited(spriteFrames[i]);
         }
         animation = new Animation<>(frameDuration, animationFrames);
+        animation.setPlayMode(looping ? LOOP : NORMAL);
+    }
+
+    public SpritedAnimation(float frameDuration, Sprite... spriteFrames) {
+        this(frameDuration, false, spriteFrames);
     }
 
     public void draw(SpriteBatch spriteBatch) {

@@ -57,7 +57,6 @@ public class CameraHandler extends GameLogicHandler {
     private void rotateY() {
         deltaY = lastPlayerY - player.getY();
         deltaY = MathUtils.map(0f, CAMERA_HEIGHT, 0f, 45f, deltaY);
-        System.out.println(deltaY);
         cameraDirection.set(camera.direction);
         camera.rotateAround(Vector3.Zero, cameraDirection.crs(Vector3.Y), deltaY);
     }

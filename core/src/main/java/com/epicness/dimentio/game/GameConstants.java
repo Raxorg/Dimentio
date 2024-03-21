@@ -39,6 +39,7 @@ public class GameConstants {
     public static final float ENEMY_SIZE = 150f;
     public static final float ENEMY_SPAWN_INTERVAL = 3f;
     public static final float ENEMY_SPAWN_Y = CAMERA_HALF_HEIGHT - ENEMY_SIZE / 2f;
+    public static final float ENEMY_SPEED = 150f;
 
     // Foliage
     public static final Array<Color> FOLIAGE_COLORS = Array.with(ORANGE, PURPLE, GRASS);

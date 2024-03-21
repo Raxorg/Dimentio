@@ -24,7 +24,7 @@ public class World2D extends Drawable2D {
     private final SnapshotArray<Sprited> bricks;
     private final Player player, playerMirror;
     private final Circle playerAttack, playerAttackMirror;
-    private final SnapshotArray<Enemy> enemies;
+    private final SnapshotArray<Enemy> enemies, enemyMirrors;
     private final Circle[] enemySpawnCircles;
     private final List<DualSprited> foliage;
 
@@ -47,6 +47,7 @@ public class World2D extends Drawable2D {
         playerAttackMirror.setThickness(5f);
 
         enemies = new SnapshotArray<>();
+        enemyMirrors = new SnapshotArray<>();
         enemySpawnCircles = new Circle[3];
         for (int i = 0; i < enemySpawnCircles.length; i++) {
             enemySpawnCircles[i] = new Circle(CLEAR);
@@ -62,9 +63,11 @@ public class World2D extends Drawable2D {
         for (int i = 0; i < bricks.size; i++) {
             bricks.get(i).draw(spriteBatch);
         }
-        getPlayerAttack().draw(shapeDrawerPlus);
+        playerAttack.draw(shapeDrawerPlus);
+        playerAttackMirror.draw(shapeDrawerPlus);
         for (int i = 0; i < enemies.size; i++) {
             enemies.get(i).draw(spriteBatch);
+            enemyMirrors.get(i).draw(spriteBatch);
         }
         for (int i = 0; i < enemySpawnCircles.length; i++) {
             enemySpawnCircles[i].draw(shapeDrawerPlus);
@@ -92,8 +95,16 @@ public class World2D extends Drawable2D {
         return playerAttack;
     }
 
+    public Circle getPlayerAttackMirror() {
+        return playerAttackMirror;
+    }
+
     public SnapshotArray<Enemy> getEnemies() {
         return enemies;
+    }
+
+    public SnapshotArray<Enemy> getEnemyMirrors() {
+        return enemyMirrors;
     }
 
     public Circle[] getEnemySpawnCircles() {

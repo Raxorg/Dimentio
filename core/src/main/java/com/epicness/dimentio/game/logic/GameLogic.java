@@ -1,51 +1,63 @@
 package com.epicness.dimentio.game.logic;
 
+import com.epicness.dimentio.game.logic.enemies.EnemyMover;
 import com.epicness.dimentio.game.logic.enemies.EnemySpawner;
 import com.epicness.dimentio.game.logic.other.CameraHandler;
 import com.epicness.dimentio.game.logic.other.FoliageHandler;
 import com.epicness.dimentio.game.logic.other.MusicHandler;
-import com.epicness.dimentio.game.logic.player.AttackHandler;
+import com.epicness.dimentio.game.logic.player.AttackCollisionHandler;
+import com.epicness.dimentio.game.logic.player.AttackCooldownHandler;
+import com.epicness.dimentio.game.logic.player.AttackWaveHandler;
 import com.epicness.dimentio.game.logic.player.GlowHandler;
 import com.epicness.dimentio.game.logic.player.MirrorHandler;
-import com.epicness.dimentio.game.logic.player.MovementHandler;
+import com.epicness.dimentio.game.logic.player.PlayerMover;
 import com.epicness.fundamentals.logic.Logic;
 
 public class GameLogic extends Logic {
 
     // Enemies
+    private final EnemyMover enemyMover;
     private final EnemySpawner enemySpawner;
     // Other
     private final CameraHandler cameraHandler;
     private final FoliageHandler foliageHandler;
     private final MusicHandler musicHandler;
     // Player
-    private final AttackHandler attackHandler;
+    private final AttackCollisionHandler attackCollisionHandler;
+    private final AttackCooldownHandler attackCooldownHandler;
+    private final AttackWaveHandler attackWaveHandler;
     private final GlowHandler glowHandler;
     private final MirrorHandler mirrorHandler;
-    private final MovementHandler movementHandler;
+    private final PlayerMover playerMover;
 
     public GameLogic() {
         // Enemies
+        registerHandler(enemyMover = new EnemyMover());
         registerHandler(enemySpawner = new EnemySpawner());
         // Other
         registerHandler(cameraHandler = new CameraHandler());
         registerHandler(foliageHandler = new FoliageHandler());
         registerHandler(musicHandler = new MusicHandler());
         // Player
-        registerHandler(attackHandler = new AttackHandler());
+        registerHandler(attackCollisionHandler = new AttackCollisionHandler());
+        registerHandler(attackCooldownHandler = new AttackCooldownHandler());
+        registerHandler(attackWaveHandler = new AttackWaveHandler());
         registerHandler(glowHandler = new GlowHandler());
         registerHandler(mirrorHandler = new MirrorHandler());
-        registerHandler(movementHandler = new MovementHandler());
+        registerHandler(playerMover = new PlayerMover());
     }
 
     @Override
     public void update() {
         // Enemies
+        enemyMover.update();
         enemySpawner.update();
         // Player
+        attackCollisionHandler.update();
+        attackCooldownHandler.update();
         glowHandler.update();
-        movementHandler.update();
-        attackHandler.update();
+        playerMover.update();
+        attackWaveHandler.update();
         mirrorHandler.update();
         // Other
         cameraHandler.update();
