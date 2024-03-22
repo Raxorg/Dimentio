@@ -3,6 +3,7 @@ package com.epicness.dimentio.game.assets;
 import static com.epicness.dimentio.game.assets.GameAssetPaths.*;
 
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.epicness.fundamentals.assets.Assets;
 
@@ -16,6 +17,20 @@ public class GameAssets extends Assets {
     private Music KOLMOSTCountingDownTheHours;
 
     private Music KOLMOSTTitle;
+
+    private Sound dead;
+
+    private Sprite activator1;
+
+    private Sprite activator1Glow;
+
+    private Sprite activator2;
+
+    private Sprite activator2Glow;
+
+    private Sprite activator3;
+
+    private Sprite activator3Glow;
 
     private Sprite fadedCircularGlow;
 
@@ -34,6 +49,13 @@ public class GameAssets extends Assets {
         KOLMOSTASecondChance = get(KOLMOSTASECONDCHANCE_MUSIC);
         KOLMOSTCountingDownTheHours = get(KOLMOSTCOUNTINGDOWNTHEHOURS_MUSIC);
         KOLMOSTTitle = get(KOLMOSTTITLE_MUSIC);
+        dead = get(DEAD_SOUND);
+        activator1 = get(ACTIVATOR1_SPRITE);
+        activator1Glow = get(ACTIVATOR1GLOW_SPRITE);
+        activator2 = get(ACTIVATOR2_SPRITE);
+        activator2Glow = get(ACTIVATOR2GLOW_SPRITE);
+        activator3 = get(ACTIVATOR3_SPRITE);
+        activator3Glow = get(ACTIVATOR3GLOW_SPRITE);
         fadedCircularGlow = get(FADEDCIRCULARGLOW_SPRITE);
         leaf1Border = get(LEAF1BORDER_SPRITE);
         leaf1Inner = get(LEAF1INNER_SPRITE);
@@ -57,6 +79,34 @@ public class GameAssets extends Assets {
 
     public Music getKOLMOSTTitle() {
         return KOLMOSTTitle;
+    }
+
+    public Sound getDead() {
+        return dead;
+    }
+
+    public Sprite getActivator1() {
+        return activator1;
+    }
+
+    public Sprite getActivator1Glow() {
+        return activator1Glow;
+    }
+
+    public Sprite getActivator2() {
+        return activator2;
+    }
+
+    public Sprite getActivator2Glow() {
+        return activator2Glow;
+    }
+
+    public Sprite getActivator3() {
+        return activator3;
+    }
+
+    public Sprite getActivator3Glow() {
+        return activator3Glow;
     }
 
     public Sprite getFadedCircularGlow() {

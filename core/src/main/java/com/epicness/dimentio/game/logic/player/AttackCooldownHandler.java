@@ -31,6 +31,7 @@ public class AttackCooldownHandler extends GameLogicHandler {
 
         if (keycode == SPACE) {
             logic.get(AttackWaveHandler.class).beginWave();
+            sharedAssets.getShortLaser().play();
             cooldown = 2f;
         }
     }

@@ -33,7 +33,7 @@ public class GlowHandler extends GameLogicHandler {
         if (progress == 0f) fadingIn = true;
         if (progress == 1f) fadingIn = false;
 
-        progress = MathUtils.clamp(progress + (fadingIn ? delta / 0.5f : -delta / 0.5f), 0f, 1f);
+        progress = MathUtils.clamp(progress + (fadingIn ? delta: -delta), 0f, 1f);
         color.set(WHITE).lerp(CLEAR, Interpolation.exp10In.apply(progress));
         player.setGlowColor(color);
         mirror.setGlowColor(color);

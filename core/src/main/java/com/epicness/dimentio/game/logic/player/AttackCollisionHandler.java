@@ -30,6 +30,7 @@ public class AttackCollisionHandler extends GameLogicHandler {
                 enemies.removeValue(enemy, true);
                 enemyMirrors.removeValue(mirror, true);
                 logic.get(MirrorHandler.class).removeTransformablePair(enemy, mirror);
+                assets.getDead().play();
             }
         }
         enemies.end();

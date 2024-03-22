@@ -6,6 +6,10 @@ import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HE
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_BLUE;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_GREEN;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_RED;
+import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_YELLOW;
 import static com.epicness.fundamentals.constants.SharedConstants.RATIO;
 
 import com.badlogic.gdx.graphics.Color;
@@ -25,6 +29,11 @@ public class GameConstants {
     // 2D World
     public static final float WORLD_WIDTH_2D = CAMERA_WIDTH * 8f;
     public static final float BORDER_HEIGHT = 8f;
+
+    // Activators
+    public static final float ACTIVATOR_SIZE = 500f;
+    public static final float ACTIVATOR_Y = CAMERA_HALF_HEIGHT - ACTIVATOR_SIZE / 2f;
+    public static final Color[] ACTIVATOR_COLORS = new Color[]{PASTEL_RED, PASTEL_GREEN, PASTEL_BLUE, PASTEL_YELLOW};
 
     // Player
     public static final float PLAYER_RADIUS = 55f;

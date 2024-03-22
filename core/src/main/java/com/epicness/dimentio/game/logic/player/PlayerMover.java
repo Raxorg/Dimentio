@@ -2,7 +2,11 @@ package com.epicness.dimentio.game.logic.player;
 
 import static com.badlogic.gdx.Input.Keys.A;
 import static com.badlogic.gdx.Input.Keys.D;
+import static com.badlogic.gdx.Input.Keys.DOWN;
+import static com.badlogic.gdx.Input.Keys.LEFT;
+import static com.badlogic.gdx.Input.Keys.RIGHT;
 import static com.badlogic.gdx.Input.Keys.S;
+import static com.badlogic.gdx.Input.Keys.UP;
 import static com.badlogic.gdx.Input.Keys.W;
 import static com.epicness.dimentio.game.GameConstants.MAX_PLAYER_Y;
 import static com.epicness.dimentio.game.GameConstants.MIN_PLAYER_Y;
@@ -46,15 +50,19 @@ public class PlayerMover extends GameLogicHandler {
 
         switch (keycode) {
             case W:
+            case UP:
                 player.getSpeed().y += PLAYER_Y_SPEED;
                 break;
             case A:
+            case LEFT:
                 player.getSpeed().x -= PLAYER_X_SPEED;
                 break;
             case S:
+            case DOWN:
                 player.getSpeed().y -= PLAYER_Y_SPEED;
                 break;
             case D:
+            case RIGHT:
                 player.getSpeed().x += PLAYER_X_SPEED;
                 break;
         }
@@ -65,15 +73,19 @@ public class PlayerMover extends GameLogicHandler {
         if (!enabled) return;
         switch (keycode) {
             case W:
+            case UP:
                 player.getSpeed().y -= PLAYER_Y_SPEED;
                 break;
             case A:
+            case LEFT:
                 player.getSpeed().x += PLAYER_X_SPEED;
                 break;
             case S:
+            case DOWN:
                 player.getSpeed().y += PLAYER_Y_SPEED;
                 break;
             case D:
+            case RIGHT:
                 player.getSpeed().x -= PLAYER_X_SPEED;
                 break;
         }

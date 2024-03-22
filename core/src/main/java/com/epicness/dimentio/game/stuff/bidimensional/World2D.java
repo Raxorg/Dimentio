@@ -21,7 +21,7 @@ import java.util.List;
 public class World2D extends Drawable2D {
 
     private final Sprited topStripe, bottomStripe;
-    private final SnapshotArray<Sprited> bricks;
+    private final BricksGame bricksGame;
     private final Player player, playerMirror;
     private final Circle playerAttack, playerAttackMirror;
     private final SnapshotArray<Enemy> enemies, enemyMirrors;
@@ -36,7 +36,7 @@ public class World2D extends Drawable2D {
         bottomStripe = new Sprited(sharedAssets.getPixel());
         bottomStripe.setSize(WORLD_WIDTH_2D, BORDER_HEIGHT);
 
-        bricks = new SnapshotArray<>();
+        bricksGame = new BricksGame(sharedAssets.getPixelFont(), assets);
 
         player = new Player(assets.getFadedCircularGlow());
         playerMirror = new Player(assets.getFadedCircularGlow());
@@ -60,9 +60,7 @@ public class World2D extends Drawable2D {
     public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawerPlus) {
         player.draw(spriteBatch, shapeDrawerPlus);
         playerMirror.draw(spriteBatch, shapeDrawerPlus);
-        for (int i = 0; i < bricks.size; i++) {
-            bricks.get(i).draw(spriteBatch);
-        }
+        bricksGame.draw(spriteBatch, shapeDrawerPlus);
         playerAttack.draw(shapeDrawerPlus);
         playerAttackMirror.draw(shapeDrawerPlus);
         for (int i = 0; i < enemies.size; i++) {
@@ -79,8 +77,8 @@ public class World2D extends Drawable2D {
         }
     }
 
-    public SnapshotArray<Sprited> getBricks() {
-        return bricks;
+    public BricksGame getBricksGame() {
+        return bricksGame;
     }
 
     public Player getPlayer() {
