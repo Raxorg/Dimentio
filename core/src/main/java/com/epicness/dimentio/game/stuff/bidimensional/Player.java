@@ -1,8 +1,8 @@
 package com.epicness.dimentio.game.stuff.bidimensional;
 
 import static com.badlogic.gdx.graphics.Color.BLACK;
-import static com.epicness.dimentio.game.GameConstants.PLAYER_DIAMETER;
-import static com.epicness.dimentio.game.GameConstants.PLAYER_INNER_RADIUS;
+import static com.epicness.dimentio.game.constants.GameConstants.PLAYER_DIAMETER;
+import static com.epicness.dimentio.game.constants.GameConstants.PLAYER_INNER_RADIUS;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;

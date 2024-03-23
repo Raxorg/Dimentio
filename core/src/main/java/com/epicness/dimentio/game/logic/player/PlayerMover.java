@@ -8,11 +8,11 @@ import static com.badlogic.gdx.Input.Keys.RIGHT;
 import static com.badlogic.gdx.Input.Keys.S;
 import static com.badlogic.gdx.Input.Keys.UP;
 import static com.badlogic.gdx.Input.Keys.W;
-import static com.epicness.dimentio.game.GameConstants.MAX_PLAYER_Y;
-import static com.epicness.dimentio.game.GameConstants.MIN_PLAYER_Y;
-import static com.epicness.dimentio.game.GameConstants.PLAYER_RADIUS;
-import static com.epicness.dimentio.game.GameConstants.PLAYER_X_SPEED;
-import static com.epicness.dimentio.game.GameConstants.PLAYER_Y_SPEED;
+import static com.epicness.dimentio.game.constants.GameConstants.MAX_PLAYER_Y;
+import static com.epicness.dimentio.game.constants.GameConstants.MIN_PLAYER_Y;
+import static com.epicness.dimentio.game.constants.GameConstants.PLAYER_RADIUS;
+import static com.epicness.dimentio.game.constants.GameConstants.PLAYER_X_SPEED;
+import static com.epicness.dimentio.game.constants.GameConstants.PLAYER_Y_SPEED;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 
 import com.badlogic.gdx.math.MathUtils;

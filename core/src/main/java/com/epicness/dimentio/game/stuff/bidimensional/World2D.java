@@ -1,8 +1,8 @@
 package com.epicness.dimentio.game.stuff.bidimensional;
 
 import static com.badlogic.gdx.graphics.Color.CLEAR;
-import static com.epicness.dimentio.game.GameConstants.BORDER_HEIGHT;
-import static com.epicness.dimentio.game.GameConstants.WORLD_WIDTH_2D;
+import static com.epicness.dimentio.game.constants.GameConstants.WORLD_2D_BORDER_HEIGHT;
+import static com.epicness.dimentio.game.constants.GameConstants.WORLD_2D_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -30,11 +30,11 @@ public class World2D extends Drawable2D {
 
     public World2D(SharedAssets sharedAssets, GameAssets assets) {
         topStripe = new Sprited(sharedAssets.getPixel());
-        topStripe.setSize(WORLD_WIDTH_2D, BORDER_HEIGHT);
-        topStripe.setY(CAMERA_HEIGHT - BORDER_HEIGHT);
+        topStripe.setSize(WORLD_2D_WIDTH, WORLD_2D_BORDER_HEIGHT);
+        topStripe.setY(CAMERA_HEIGHT - WORLD_2D_BORDER_HEIGHT);
 
         bottomStripe = new Sprited(sharedAssets.getPixel());
-        bottomStripe.setSize(WORLD_WIDTH_2D, BORDER_HEIGHT);
+        bottomStripe.setSize(WORLD_2D_WIDTH, WORLD_2D_BORDER_HEIGHT);
 
         bricksGame = new BricksGame(sharedAssets.getPixelFont(), assets);
 

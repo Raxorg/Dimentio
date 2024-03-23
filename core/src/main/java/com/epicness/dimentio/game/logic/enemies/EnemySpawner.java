@@ -2,9 +2,9 @@ package com.epicness.dimentio.game.logic.enemies;
 
 import static com.badlogic.gdx.graphics.Color.CLEAR;
 import static com.badlogic.gdx.graphics.Color.WHITE;
-import static com.epicness.dimentio.game.GameConstants.ENEMY_SIZE;
-import static com.epicness.dimentio.game.GameConstants.ENEMY_SPAWN_INTERVAL;
-import static com.epicness.dimentio.game.GameConstants.ENEMY_SPAWN_Y;
+import static com.epicness.dimentio.game.constants.GameConstants.ENEMY_SIZE;
+import static com.epicness.dimentio.game.constants.GameConstants.ENEMY_SPAWN_INTERVAL;
+import static com.epicness.dimentio.game.constants.GameConstants.ENEMY_SPAWN_Y;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;

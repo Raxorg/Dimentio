@@ -22,6 +22,8 @@ public class GameAssets extends Assets {
 
     private Sound futuristic;
 
+    private Sound hit;
+
     private Sound wisp;
 
     private Sprite activator1;
@@ -57,6 +59,7 @@ public class GameAssets extends Assets {
         KOLMOSTTitle = get(KOLMOSTTITLE_MUSIC);
         dead = get(DEAD_SOUND);
         futuristic = get(FUTURISTIC_SOUND);
+        hit = get(HIT_SOUND);
         wisp = get(WISP_SOUND);
         activator1 = get(ACTIVATOR1_SPRITE);
         activator1Glow = get(ACTIVATOR1GLOW_SPRITE);
@@ -96,6 +99,10 @@ public class GameAssets extends Assets {
 
     public Sound getFuturistic() {
         return futuristic;
+    }
+
+    public Sound getHit() {
+        return hit;
     }
 
     public Sound getWisp() {

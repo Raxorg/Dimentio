@@ -5,6 +5,7 @@ import static com.badlogic.gdx.graphics.Color.WHITE;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.epicness.dimentio.game.assets.GameAssets;
+import com.epicness.dimentio.game.constants.Level;
 import com.epicness.fundamentals.stuff.DualSprited;
 
 public class Activator {
@@ -13,8 +14,9 @@ public class Activator {
     private final Color normalColor, glowColor;
     private boolean activated;
     private float speedFactor;
+    public final Level level;
 
-    public Activator(GameAssets assets, Color color) {
+    public Activator(GameAssets assets, Color color, Level level) {
         glowColor = new Color(color);
         normalColor = new Color(color).lerp(WHITE, 0.35f);
 
@@ -32,6 +34,8 @@ public class Activator {
         outer.setOriginCenter();
         outer.setBackgroundColor(glowColor);
         outer.setForegroundColor(normalColor);
+
+        this.level = level;
     }
 
     public void draw(SpriteBatch spriteBatch) {

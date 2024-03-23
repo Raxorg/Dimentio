@@ -1,10 +1,10 @@
 package com.epicness.dimentio.game.stuff.tridimensional;
 
-import static com.epicness.dimentio.game.GameConstants.CYLINDER_DIAMETER;
-import static com.epicness.dimentio.game.GameConstants.CYLINDER_RADIUS;
-import static com.epicness.dimentio.game.GameConstants.DECAL_CUBE_XZ_RADIUS;
-import static com.epicness.dimentio.game.GameConstants.DECAL_SCREEN_HEIGHT;
-import static com.epicness.dimentio.game.GameConstants.DECAL_SCREEN_WIDTH;
+import static com.epicness.dimentio.game.constants.GameConstants.CYLINDER_DIAMETER;
+import static com.epicness.dimentio.game.constants.GameConstants.CYLINDER_RADIUS;
+import static com.epicness.dimentio.game.constants.GameConstants.DECAL_CUBE_XZ_RADIUS;
+import static com.epicness.dimentio.game.constants.GameConstants.DECAL_SCREEN_HEIGHT;
+import static com.epicness.dimentio.game.constants.GameConstants.DECAL_SCREEN_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 

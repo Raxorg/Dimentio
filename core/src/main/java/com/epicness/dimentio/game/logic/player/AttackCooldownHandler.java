@@ -37,4 +37,8 @@ public class AttackCooldownHandler extends GameLogicHandler {
             cooldown = 2f;
         }
     }
+
+    public boolean isOnCooldown() {
+        return cooldown > 0f;
+    }
 }

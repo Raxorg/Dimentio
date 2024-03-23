@@ -2,7 +2,7 @@ package com.epicness.dimentio.game.stuff.bidimensional;
 
 import static com.badlogic.gdx.graphics.Color.CLEAR;
 import static com.badlogic.gdx.graphics.Color.GREEN;
-import static com.epicness.dimentio.game.GameConstants.ENEMY_SIZE;
+import static com.epicness.dimentio.game.constants.GameConstants.ENEMY_SIZE;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

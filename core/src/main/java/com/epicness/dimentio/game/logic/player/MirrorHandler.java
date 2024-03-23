@@ -1,6 +1,6 @@
 package com.epicness.dimentio.game.logic.player;
 
-import static com.epicness.dimentio.game.GameConstants.WORLD_WIDTH_2D;
+import static com.epicness.dimentio.game.constants.GameConstants.WORLD_2D_WIDTH;
 
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.SnapshotArray;
@@ -28,13 +28,13 @@ public class MirrorHandler extends GameLogicHandler {
         for (int i = 0; i < originals.size; i++) {
             original = originals.get(i);
             mirror = mirrors.get(i);
-            if (original.getEndX() >= WORLD_WIDTH_2D) {
-                original.setX(original.getX() - WORLD_WIDTH_2D);
+            if (original.getEndX() >= WORLD_2D_WIDTH) {
+                original.setX(original.getX() - WORLD_2D_WIDTH);
             }
             if (original.getEndX() <= 0f) {
-                original.setX(original.getX() + WORLD_WIDTH_2D);
+                original.setX(original.getX() + WORLD_2D_WIDTH);
             }
-            mirror.setPosition(original.getX() + WORLD_WIDTH_2D, original.getY());
+            mirror.setPosition(original.getX() + WORLD_2D_WIDTH, original.getY());
         }
     }
 

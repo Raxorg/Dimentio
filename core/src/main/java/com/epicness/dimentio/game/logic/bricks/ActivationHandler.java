@@ -1,7 +1,6 @@
 package com.epicness.dimentio.game.logic.bricks;
 
-import static com.epicness.dimentio.game.GameConstants.PADDLE_WIDTH;
-import static com.epicness.dimentio.game.GameConstants.PLAYER_STARTING_PADDLE_Y;
+import static com.epicness.dimentio.game.constants.GameConstants.PLAYER_STARTING_PADDLE_Y;
 
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
@@ -75,7 +74,8 @@ public class ActivationHandler extends GameLogicHandler {
         activatedActivator.setSpeedFactor(activatedActivator.getSpeedFactor() + progress * 2f);
         if (progress == 1f) {
             player.getCenter(playerCenter);
-            logic.get(PaddleHandler.class).showPaddle(playerCenter.x - PADDLE_WIDTH / 2f);
+            logic.get(PaddleHandler.class).showPaddle(playerCenter.x);
+            logic.get(BrickHandler.class).spawnBricks(activatedActivator.level);
             auxVector.set(playerCenter.x, PLAYER_STARTING_PADDLE_Y);
             step1 = false;
             progress = 0f;
@@ -87,7 +87,6 @@ public class ActivationHandler extends GameLogicHandler {
         lerpVector.set(playerCenter);
         player.setPosition(lerpVector.lerp(auxVector, Interpolation.circleOut.apply(progress)));
         if (progress == 1f) {
-            logic.get(BallMover.class).setEnabled(true);
             activating = false;
         }
     }

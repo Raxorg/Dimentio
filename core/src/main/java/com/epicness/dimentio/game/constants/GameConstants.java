@@ -1,4 +1,4 @@
-package com.epicness.dimentio.game;
+package com.epicness.dimentio.game.constants;
 
 import static com.badlogic.gdx.graphics.Color.BLUE;
 import static com.badlogic.gdx.graphics.Color.GREEN;
@@ -27,19 +27,22 @@ public class GameConstants {
     public static final float CYLINDER_DIAMETER = CYLINDER_RADIUS * 2f;
 
     // 2D World
-    public static final float WORLD_WIDTH_2D = CAMERA_WIDTH * 8f;
-    public static final float BORDER_HEIGHT = 8f;
+    public static final float WORLD_2D_WIDTH = CAMERA_WIDTH * 8f;
+    public static final float WORLD_2D_BORDER_HEIGHT = 8f;
+    public static final float WORLD_2D_TOP = CAMERA_HEIGHT - WORLD_2D_BORDER_HEIGHT;
 
     // Activators
     public static final float ACTIVATOR_SIZE = 500f;
     public static final float ACTIVATOR_Y = CAMERA_HALF_HEIGHT - ACTIVATOR_SIZE / 2f;
     public static final Color[] ACTIVATOR_COLORS = new Color[]{RED, GREEN, BLUE, YELLOW};
+    public static final Level[] LEVELS = new Level[]{Level.RED, Level.GREEN, Level.BLUE, Level.YELLOW};
 
     // Paddle
     public static final float PADDLE_WIDTH = 200f;
     public static final float PADDLE_HEIGHT = 40f;
     public static final float PADDLE_SPEED = 800f;
-    public static final float PADDLE_Y = BORDER_HEIGHT;
+    public static final float PADDLE_Y = WORLD_2D_BORDER_HEIGHT;
+    public static final float PADDLE_TOP = PADDLE_Y + PADDLE_HEIGHT;
 
     // Player
     public static final float PLAYER_RADIUS = 55f;
@@ -47,9 +50,22 @@ public class GameConstants {
     public static final float PLAYER_DIAMETER = PLAYER_RADIUS * 2f;
     public static final float PLAYER_X_SPEED = 1000f;
     public static final float PLAYER_Y_SPEED = 500f;
-    public static final float MIN_PLAYER_Y = BORDER_HEIGHT + PLAYER_INNER_RADIUS;
-    public static final float MAX_PLAYER_Y = CAMERA_HEIGHT - BORDER_HEIGHT - PLAYER_INNER_RADIUS;
-    public static final float PLAYER_STARTING_PADDLE_Y = BORDER_HEIGHT + PADDLE_HEIGHT + PLAYER_INNER_RADIUS;
+    public static final float MIN_PLAYER_Y = WORLD_2D_BORDER_HEIGHT + PLAYER_INNER_RADIUS;
+    public static final float MAX_PLAYER_Y = CAMERA_HEIGHT - WORLD_2D_BORDER_HEIGHT - PLAYER_INNER_RADIUS;
+    public static final float PLAYER_STARTING_PADDLE_Y = WORLD_2D_BORDER_HEIGHT + PADDLE_HEIGHT + PLAYER_INNER_RADIUS;
+
+    // Bricks
+    public static final float BRICK_WIDTH = 160f;
+    public static final float BRICK_HEIGHT = 40f;
+    public static final int BRICK_COLUMNS = 7;
+    public static final int BRICK_ROWS = 5;
+    public static final float BRICK_X_SPACING = (CAMERA_WIDTH - BRICK_WIDTH * BRICK_COLUMNS) / (BRICK_COLUMNS + 1);
+    public static final float BRICK_Y_SPACING = 20f;
+    public static final float BRICKS_TOP_Y = CAMERA_HEIGHT - WORLD_2D_BORDER_HEIGHT - BRICK_HEIGHT * 2f;
+    public static final float GREEN_START_X = CAMERA_WIDTH * 2f;
+    public static final float BLUE_START_X = CAMERA_WIDTH * 4f;
+    public static final float YELLOW_START_X = CAMERA_WIDTH * 6f;
+    public static final float BRICK_BALL_SPEED = 500f;
 
     // Enemies
     public static final float ENEMY_SIZE = 150f;

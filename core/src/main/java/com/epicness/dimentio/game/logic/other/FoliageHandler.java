@@ -1,8 +1,8 @@
 package com.epicness.dimentio.game.logic.other;
 
 import static com.badlogic.gdx.graphics.Color.CLEAR;
-import static com.epicness.dimentio.game.GameConstants.BORDER_HEIGHT;
-import static com.epicness.dimentio.game.GameConstants.FOLIAGE_COLORS;
+import static com.epicness.dimentio.game.constants.GameConstants.WORLD_2D_BORDER_HEIGHT;
+import static com.epicness.dimentio.game.constants.GameConstants.FOLIAGE_COLORS;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
@@ -29,7 +29,7 @@ public class FoliageHandler extends GameLogicHandler {
                 leaf = new DualSprited(assets.getLeaf1Inner(), assets.getLeaf1Border());
 
                 leaf.setX(x + MathUtils.random(CAMERA_WIDTH - leaf.getWidth()));
-                leaf.setY(BORDER_HEIGHT);
+                leaf.setY(WORLD_2D_BORDER_HEIGHT);
 
                 leaf.setOrigin(leaf.getWidth() / 2f, 0f);
                 leaf.setScale(MathUtils.random(0.5f, 2f));

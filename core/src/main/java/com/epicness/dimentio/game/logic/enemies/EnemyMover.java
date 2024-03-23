@@ -1,7 +1,7 @@
 package com.epicness.dimentio.game.logic.enemies;
 
-import static com.epicness.dimentio.game.GameConstants.ENEMY_SPEED;
-import static com.epicness.dimentio.game.GameConstants.WORLD_WIDTH_2D;
+import static com.epicness.dimentio.game.constants.GameConstants.ENEMY_SPEED;
+import static com.epicness.dimentio.game.constants.GameConstants.WORLD_2D_WIDTH;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -43,7 +43,7 @@ public class EnemyMover extends GameLogicHandler {
             playerMirror.getCenter(playerMirrorCenter);
 
             degrees = AngleUtils.degreesBetweenPoints(playerCenter, enemyCenter);
-            if (enemyCenter.dst(playerCenter) > WORLD_WIDTH_2D / 2f) degrees += 180f;
+            if (enemyCenter.dst(playerCenter) > WORLD_2D_WIDTH / 2f) degrees += 180f;
             enemy.setRotation(degrees);
             mirror.setRotation(degrees);
             enemy.setFlipY(Math.abs(degrees) >= 90f);

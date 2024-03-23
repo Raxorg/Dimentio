@@ -24,6 +24,8 @@ public class GameAssetPaths {
 
     public static final AssetDescriptor<Sound> FUTURISTIC_SOUND;
 
+    public static final AssetDescriptor<Sound> HIT_SOUND;
+
     public static final AssetDescriptor<Sound> WISP_SOUND;
 
     public static final AssetDescriptor<Sprite> ACTIVATOR1_SPRITE;
@@ -55,6 +57,7 @@ public class GameAssetPaths {
         ASSETS.add(KOLMOSTTITLE_MUSIC = new AssetDescriptor<>("dimentio/game/audios/music/KOLMOSTTitle.mogg", Music.class));
         ASSETS.add(DEAD_SOUND = new AssetDescriptor<>("dimentio/game/audios/sounds/dead.swav", Sound.class));
         ASSETS.add(FUTURISTIC_SOUND = new AssetDescriptor<>("dimentio/game/audios/sounds/futuristic.swav", Sound.class));
+        ASSETS.add(HIT_SOUND = new AssetDescriptor<>("dimentio/game/audios/sounds/hit.swav", Sound.class));
         ASSETS.add(WISP_SOUND = new AssetDescriptor<>("dimentio/game/audios/sounds/wisp.swav", Sound.class));
         ASSETS.add(ACTIVATOR1_SPRITE = new AssetDescriptor<>("dimentio/game/images/activator1.png", Sprite.class));
         ASSETS.add(ACTIVATOR1GLOW_SPRITE = new AssetDescriptor<>("dimentio/game/images/activator1Glow.png", Sprite.class));

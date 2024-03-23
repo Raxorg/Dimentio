@@ -1,7 +1,7 @@
 package com.epicness.dimentio.game.logic.other;
 
 import static com.badlogic.gdx.Input.Keys.F;
-import static com.epicness.dimentio.game.GameConstants.PLAYER_RADIUS;
+import static com.epicness.dimentio.game.constants.GameConstants.PLAYER_RADIUS;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;

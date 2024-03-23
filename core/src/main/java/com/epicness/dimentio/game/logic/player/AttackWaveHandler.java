@@ -29,8 +29,6 @@ public class AttackWaveHandler extends GameLogicHandler {
     }
 
     public void beginWave() {
-        playerAttack.setPosition(player.getCenter(auxVector));
-        playerAttackMirror.setPosition(player.getCenter(auxVector));
         growthProgress = 0f;
         attacking = true;
     }
@@ -40,6 +38,8 @@ public class AttackWaveHandler extends GameLogicHandler {
         if (!attacking) return;
 
         growAttack(delta);
+        playerAttack.setPosition(player.getCenter(auxVector));
+        playerAttackMirror.setPosition(player.getCenter(auxVector));
     }
 
     private void growAttack(float delta) {
