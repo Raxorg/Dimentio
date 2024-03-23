@@ -15,4 +15,6 @@ public class DimentioGame extends Game {
         assets.initializeAssets();
         new GameInitializer(assets).initialize(new SharedResources());
     }
+
+    // TODO: 3/22/2024 OPEN WORLD GAME (small world, still open xd)
 }

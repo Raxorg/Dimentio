@@ -1,15 +1,15 @@
 package com.epicness.dimentio.game;
 
+import static com.badlogic.gdx.graphics.Color.BLUE;
+import static com.badlogic.gdx.graphics.Color.GREEN;
 import static com.badlogic.gdx.graphics.Color.ORANGE;
 import static com.badlogic.gdx.graphics.Color.PURPLE;
+import static com.badlogic.gdx.graphics.Color.RED;
+import static com.badlogic.gdx.graphics.Color.YELLOW;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HALF_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.GRASS;
-import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_BLUE;
-import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_GREEN;
-import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_RED;
-import static com.epicness.fundamentals.constants.SharedConstants.PASTEL_YELLOW;
 import static com.epicness.fundamentals.constants.SharedConstants.RATIO;
 
 import com.badlogic.gdx.graphics.Color;
@@ -33,7 +33,13 @@ public class GameConstants {
     // Activators
     public static final float ACTIVATOR_SIZE = 500f;
     public static final float ACTIVATOR_Y = CAMERA_HALF_HEIGHT - ACTIVATOR_SIZE / 2f;
-    public static final Color[] ACTIVATOR_COLORS = new Color[]{PASTEL_RED, PASTEL_GREEN, PASTEL_BLUE, PASTEL_YELLOW};
+    public static final Color[] ACTIVATOR_COLORS = new Color[]{RED, GREEN, BLUE, YELLOW};
+
+    // Paddle
+    public static final float PADDLE_WIDTH = 200f;
+    public static final float PADDLE_HEIGHT = 40f;
+    public static final float PADDLE_SPEED = 800f;
+    public static final float PADDLE_Y = BORDER_HEIGHT;
 
     // Player
     public static final float PLAYER_RADIUS = 55f;
@@ -43,6 +49,7 @@ public class GameConstants {
     public static final float PLAYER_Y_SPEED = 500f;
     public static final float MIN_PLAYER_Y = BORDER_HEIGHT + PLAYER_INNER_RADIUS;
     public static final float MAX_PLAYER_Y = CAMERA_HEIGHT - BORDER_HEIGHT - PLAYER_INNER_RADIUS;
+    public static final float PLAYER_STARTING_PADDLE_Y = BORDER_HEIGHT + PADDLE_HEIGHT + PLAYER_INNER_RADIUS;
 
     // Enemies
     public static final float ENEMY_SIZE = 150f;

@@ -1,6 +1,9 @@
 package com.epicness.dimentio.game.logic;
 
-import com.epicness.dimentio.game.logic.bricks.ActivatorHandler;
+import com.epicness.dimentio.game.logic.bricks.ActivationHandler;
+import com.epicness.dimentio.game.logic.bricks.ActivatorAnimator;
+import com.epicness.dimentio.game.logic.bricks.BallMover;
+import com.epicness.dimentio.game.logic.bricks.PaddleHandler;
 import com.epicness.dimentio.game.logic.enemies.EnemyMover;
 import com.epicness.dimentio.game.logic.enemies.EnemySpawner;
 import com.epicness.dimentio.game.logic.other.CameraHandler;
@@ -17,7 +20,10 @@ import com.epicness.fundamentals.logic.Logic;
 public class GameLogic extends Logic {
 
     // Bricks
-    private final ActivatorHandler activatorHandler;
+    private final ActivationHandler activationHandler;
+    private final ActivatorAnimator activatorAnimator;
+    private final BallMover ballMover;
+    private final PaddleHandler paddleHandler;
     // Enemies
     private final EnemyMover enemyMover;
     private final EnemySpawner enemySpawner;
@@ -35,7 +41,10 @@ public class GameLogic extends Logic {
 
     public GameLogic() {
         // Bricks
-        registerHandler(activatorHandler = new ActivatorHandler());
+        registerHandler(activationHandler = new ActivationHandler());
+        registerHandler(activatorAnimator = new ActivatorAnimator());
+        registerHandler(ballMover = new BallMover());
+        registerHandler(paddleHandler = new PaddleHandler());
         // Enemies
         registerHandler(enemyMover = new EnemyMover());
         registerHandler(enemySpawner = new EnemySpawner());
@@ -55,7 +64,10 @@ public class GameLogic extends Logic {
     @Override
     public void update() {
         // Bricks
-        activatorHandler.update();
+        activationHandler.update();
+        activatorAnimator.update();
+        ballMover.update();
+        paddleHandler.update();
         // Enemies
         enemyMover.update();
         enemySpawner.update();

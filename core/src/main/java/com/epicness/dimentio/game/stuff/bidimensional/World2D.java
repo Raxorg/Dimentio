@@ -20,7 +20,7 @@ import java.util.List;
 
 public class World2D extends Drawable2D {
 
-    private final Sprited topStripe, bottomStripe;
+    private final Sprited topStripe, bottomStripe;// TODO: Color stripes according to level
     private final BricksGame bricksGame;
     private final Player player, playerMirror;
     private final Circle playerAttack, playerAttackMirror;
@@ -58,9 +58,9 @@ public class World2D extends Drawable2D {
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawerPlus) {
+        bricksGame.draw(spriteBatch, shapeDrawerPlus);
         player.draw(spriteBatch, shapeDrawerPlus);
         playerMirror.draw(spriteBatch, shapeDrawerPlus);
-        bricksGame.draw(spriteBatch, shapeDrawerPlus);
         playerAttack.draw(shapeDrawerPlus);
         playerAttackMirror.draw(shapeDrawerPlus);
         for (int i = 0; i < enemies.size; i++) {

@@ -4,6 +4,7 @@ import static com.badlogic.gdx.Input.Keys.SPACE;
 import static com.badlogic.gdx.graphics.Color.BLACK;
 
 import com.epicness.dimentio.game.logic.GameLogicHandler;
+import com.epicness.dimentio.game.logic.bricks.ActivationHandler;
 import com.epicness.dimentio.game.stuff.bidimensional.Player;
 
 public class AttackCooldownHandler extends GameLogicHandler {
@@ -30,6 +31,7 @@ public class AttackCooldownHandler extends GameLogicHandler {
         if (cooldown > 0f) return;
 
         if (keycode == SPACE) {
+            logic.get(ActivationHandler.class).checkActivation();
             logic.get(AttackWaveHandler.class).beginWave();
             sharedAssets.getShortLaser().play();
             cooldown = 2f;

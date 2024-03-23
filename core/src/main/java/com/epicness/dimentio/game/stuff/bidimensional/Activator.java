@@ -12,25 +12,26 @@ public class Activator {
     private final DualSprited inner, mid, outer;
     private final Color normalColor, glowColor;
     private boolean activated;
+    private float speedFactor;
 
     public Activator(GameAssets assets, Color color) {
-        normalColor = new Color(color);
-        glowColor = new Color(color).lerp(WHITE, 0.2f);
+        glowColor = new Color(color);
+        normalColor = new Color(color).lerp(WHITE, 0.35f);
 
         inner = new DualSprited(assets.getActivator1Glow(), assets.getActivator1());
         inner.setOriginCenter();
-        inner.setBackgroundColor(normalColor);
-        inner.setForegroundColor(glowColor);
+        inner.setBackgroundColor(glowColor);
+        inner.setForegroundColor(normalColor);
 
         mid = new DualSprited(assets.getActivator2Glow(), assets.getActivator2());
         mid.setOriginCenter();
-        mid.setBackgroundColor(normalColor);
-        mid.setForegroundColor(glowColor);
+        mid.setBackgroundColor(glowColor);
+        mid.setForegroundColor(normalColor);
 
         outer = new DualSprited(assets.getActivator3Glow(), assets.getActivator3());
         outer.setOriginCenter();
-        outer.setBackgroundColor(normalColor);
-        outer.setForegroundColor(glowColor);
+        outer.setBackgroundColor(glowColor);
+        outer.setForegroundColor(normalColor);
     }
 
     public void draw(SpriteBatch spriteBatch) {
@@ -74,5 +75,13 @@ public class Activator {
 
     public void setActivated(boolean activated) {
         this.activated = activated;
+    }
+
+    public float getSpeedFactor() {
+        return speedFactor;
+    }
+
+    public void setSpeedFactor(float speedFactor) {
+        this.speedFactor = speedFactor;
     }
 }
