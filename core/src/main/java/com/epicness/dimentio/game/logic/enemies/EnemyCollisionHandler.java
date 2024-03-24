@@ -1,37 +1,37 @@
-package com.epicness.dimentio.game.logic.player;
+package com.epicness.dimentio.game.logic.enemies;
 
 import com.badlogic.gdx.utils.SnapshotArray;
 import com.epicness.dimentio.game.logic.GameLogicHandler;
+import com.epicness.dimentio.game.logic.player.LifeHandler;
+import com.epicness.dimentio.game.logic.player.MirrorHandler;
 import com.epicness.dimentio.game.stuff.bidimensional.Enemy;
-import com.epicness.fundamentals.stuff.shapes.bidimensional.Circle;
+import com.epicness.dimentio.game.stuff.bidimensional.Player;
 
-public class AttackCollisionHandler extends GameLogicHandler {
+public class EnemyCollisionHandler extends GameLogicHandler {
 
     private SnapshotArray<Enemy> enemies, enemyMirrors;
-    private Circle playerAttack, playerAttackMirror;
+    private Player player;
 
     @Override
     protected void init() {
         enemies = stuff.getWorld2D().getEnemies();
         enemyMirrors = stuff.getWorld2D().getEnemyMirrors();
-        playerAttack = stuff.getWorld2D().getPlayerAttack();
-        playerAttackMirror = stuff.getWorld2D().getPlayerAttackMirror();
+        player = stuff.getWorld2D().getPlayer();
     }
 
-    @Override
-    protected void update(float delta) {
+    public void checkCollisions() {
         Enemy enemy, mirror;
         enemies.begin();
         enemyMirrors.begin();
         for (int i = 0; i < enemies.size; i++) {
             enemy = enemies.get(i);
             mirror = enemyMirrors.get(i);
-            if ((enemy.getBounds().overlaps(playerAttack) || enemy.getBounds().overlaps(playerAttackMirror))
-                && playerAttack.getBorderColor().a >= 0.4f) {
+            if (enemy.getBounds().overlaps(player.getCircle())) {
                 enemies.removeValue(enemy, true);
                 enemyMirrors.removeValue(mirror, true);
                 logic.get(MirrorHandler.class).removeTransformablePair(enemy, mirror);
                 assets.getDead().play();
+                logic.get(LifeHandler.class).loseLife();
             }
         }
         enemies.end();

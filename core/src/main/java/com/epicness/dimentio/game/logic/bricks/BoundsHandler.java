@@ -32,6 +32,7 @@ public class BoundsHandler extends GameLogicHandler {
             logic.get(BrickHandler.class).restartLevel();
             logic.get(BallMover.class).attachToPaddle();
             logic.get(BallMover.class).disableMovement();
+            assets.getDead().play();
         }
         if (player.getX() - PLAYER_INNER_RADIUS < leftLimit.getX()) {
             player.setX(leftLimit.getX() + PLAYER_INNER_RADIUS);

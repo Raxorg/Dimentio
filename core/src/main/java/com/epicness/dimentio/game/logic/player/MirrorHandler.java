@@ -41,7 +41,6 @@ public class MirrorHandler extends GameLogicHandler {
     public void registerTransformablePair(Transformable original, Transformable mirror) {
         originals.add(original);
         mirrors.add(mirror);
-        System.out.println(originals.size);
     }
 
     public void removeTransformablePair(Transformable original, Transformable mirror) {

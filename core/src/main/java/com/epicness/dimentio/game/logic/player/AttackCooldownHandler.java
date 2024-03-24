@@ -2,6 +2,7 @@ package com.epicness.dimentio.game.logic.player;
 
 import static com.badlogic.gdx.Input.Keys.SPACE;
 import static com.badlogic.gdx.graphics.Color.BLACK;
+import static com.epicness.dimentio.game.constants.GameConstants.ATTACK_COOLDOWN;
 
 import com.epicness.dimentio.game.logic.GameLogicHandler;
 import com.epicness.dimentio.game.logic.bricks.ActivationHandler;
@@ -34,7 +35,7 @@ public class AttackCooldownHandler extends GameLogicHandler {
             logic.get(ActivationHandler.class).checkActivation();
             logic.get(AttackWaveHandler.class).beginWave();
             sharedAssets.getShortLaser().play();
-            cooldown = 2f;
+            cooldown = ATTACK_COOLDOWN;
         }
     }
 

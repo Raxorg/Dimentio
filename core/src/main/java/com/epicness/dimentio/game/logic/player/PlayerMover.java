@@ -28,7 +28,7 @@ public class PlayerMover extends GameLogicHandler {
     @Override
     protected void init() {
         player = stuff.getWorld2D().getPlayer();
-        player.setY(CAMERA_HALF_HEIGHT - PLAYER_RADIUS);
+        player.setPosition(0f, CAMERA_HALF_HEIGHT - PLAYER_RADIUS);
         enabled = true;
     }
 

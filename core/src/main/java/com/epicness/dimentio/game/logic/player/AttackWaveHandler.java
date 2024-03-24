@@ -1,6 +1,8 @@
 package com.epicness.dimentio.game.logic.player;
 
 import static com.badlogic.gdx.graphics.Color.CLEAR;
+import static com.epicness.dimentio.game.constants.GameConstants.PLAYER_INNER_DIAMETER;
+import static com.epicness.dimentio.game.constants.GameConstants.PLAYER_INNER_RADIUS;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
@@ -48,8 +50,8 @@ public class AttackWaveHandler extends GameLogicHandler {
         auxColor.set(player.getBaseColor()).lerp(CLEAR, growthProgress);
         playerAttack.setBorderColor(auxColor);
         playerAttackMirror.setBorderColor(auxColor);
-        playerAttack.setRadius(growthProgress * 250f);
-        playerAttackMirror.setRadius(growthProgress * 250f);
+        playerAttack.setRadius(PLAYER_INNER_DIAMETER + growthProgress * 250f);
+        playerAttackMirror.setRadius(PLAYER_INNER_DIAMETER + growthProgress * 250f);
 
         if (growthProgress == 1f) {
             attacking = false;

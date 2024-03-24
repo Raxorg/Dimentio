@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.SnapshotArray;
 import com.epicness.dimentio.game.logic.GameLogicHandler;
 import com.epicness.dimentio.game.logic.player.AttackCooldownHandler;
+import com.epicness.dimentio.game.logic.player.LifeHandler;
 import com.epicness.dimentio.game.logic.player.PlayerMover;
 import com.epicness.dimentio.game.stuff.bidimensional.Player;
 import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
@@ -31,7 +32,7 @@ public class BallMover extends GameLogicHandler {
     }
 
     public void launchBall() {
-        float angle = MathUtils.random(50f, 130f);
+        float angle = MathUtils.randomBoolean() ? 50f : 130f;
         player.getSpeed().set(MathUtils.cosDeg(angle) * BRICK_BALL_SPEED, MathUtils.sinDeg(angle) * BRICK_BALL_SPEED);
         movementEnabled = true;
     }
@@ -61,6 +62,8 @@ public class BallMover extends GameLogicHandler {
                     logic.get(ActivatorAnimator.class).setProximityFadeEnabled(true);
                     logic.get(PlayerMover.class).setEnabled(true);
                     logic.get(PaddleHandler.class).hidePaddle();
+                    logic.get(LifeHandler.class).gainLife();
+                    assets.getFuturistic().play();
                     movementEnabled = false;
                 }
                 break;
@@ -85,6 +88,7 @@ public class BallMover extends GameLogicHandler {
         }
         player.translateY(yTranslation);
 
+        assets.getHit().play();
         bricks.removeValue(brick, true);
     }
 

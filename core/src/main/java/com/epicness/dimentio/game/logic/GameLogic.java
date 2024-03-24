@@ -7,15 +7,18 @@ import com.epicness.dimentio.game.logic.bricks.BoundsHandler;
 import com.epicness.dimentio.game.logic.bricks.BrickHandler;
 import com.epicness.dimentio.game.logic.bricks.LimitHandler;
 import com.epicness.dimentio.game.logic.bricks.PaddleHandler;
+import com.epicness.dimentio.game.logic.enemies.EnemyCollisionHandler;
 import com.epicness.dimentio.game.logic.enemies.EnemyMover;
 import com.epicness.dimentio.game.logic.enemies.EnemySpawner;
 import com.epicness.dimentio.game.logic.other.CameraHandler;
+import com.epicness.dimentio.game.logic.other.CoverHandler;
 import com.epicness.dimentio.game.logic.other.FoliageHandler;
 import com.epicness.dimentio.game.logic.other.MusicHandler;
 import com.epicness.dimentio.game.logic.player.AttackCollisionHandler;
 import com.epicness.dimentio.game.logic.player.AttackCooldownHandler;
 import com.epicness.dimentio.game.logic.player.AttackWaveHandler;
 import com.epicness.dimentio.game.logic.player.GlowHandler;
+import com.epicness.dimentio.game.logic.player.LifeHandler;
 import com.epicness.dimentio.game.logic.player.MirrorHandler;
 import com.epicness.dimentio.game.logic.player.PlayerMover;
 import com.epicness.fundamentals.logic.Logic;
@@ -33,6 +36,7 @@ public class GameLogic extends Logic {
     private final EnemySpawner enemySpawner;
     // Other
     private final CameraHandler cameraHandler;
+    private final CoverHandler coverHandler;
     private final FoliageHandler foliageHandler;
     private final MusicHandler musicHandler;
     // Player
@@ -53,10 +57,12 @@ public class GameLogic extends Logic {
         registerHandler(new LimitHandler());
         registerHandler(paddleHandler = new PaddleHandler());
         // Enemies
+        registerHandler(new EnemyCollisionHandler());
         registerHandler(enemyMover = new EnemyMover());
         registerHandler(enemySpawner = new EnemySpawner());
         // Other
         registerHandler(cameraHandler = new CameraHandler());
+        registerHandler(coverHandler = new CoverHandler());
         registerHandler(foliageHandler = new FoliageHandler());
         registerHandler(musicHandler = new MusicHandler());
         // Player
@@ -64,6 +70,7 @@ public class GameLogic extends Logic {
         registerHandler(attackCooldownHandler = new AttackCooldownHandler());
         registerHandler(attackWaveHandler = new AttackWaveHandler());
         registerHandler(glowHandler = new GlowHandler());
+        registerHandler(new LifeHandler());
         registerHandler(mirrorHandler = new MirrorHandler());
         registerHandler(playerMover = new PlayerMover());
     }
@@ -88,7 +95,8 @@ public class GameLogic extends Logic {
         mirrorHandler.update();
         // Other
         cameraHandler.update();
+        coverHandler.update();
         foliageHandler.update();
-        //musicHandler.update();
+        musicHandler.update();
     }
 }

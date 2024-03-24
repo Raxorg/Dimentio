@@ -19,5 +19,12 @@ public class GameRenderer extends Renderer3D<GameStuff> {
         modelBatch.begin(perspectiveCamera);
         stuff.getWorld3D().draw3D(modelBatch);
         modelBatch.end();
+
+        useStaticCamera();
+        spriteBatch.begin();
+        for (int i = 0; i < stuff.getLives().length; i++) {
+            stuff.getLives()[i].draw(spriteBatch);
+        }
+        spriteBatch.end();
     }
 }

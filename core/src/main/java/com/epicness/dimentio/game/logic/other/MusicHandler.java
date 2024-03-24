@@ -8,6 +8,9 @@ public class MusicHandler extends GameLogicHandler {
 
     @Override
     protected void init() {
+        assets.getKOLMOSTCountingDownTheHours().setVolume(0.5f);
+        assets.getKOLMOSTASecondChance().setVolume(0.5f);
+        assets.getKOLMOSTTitle().setVolume(0.5f);
         track = 0;
     }
 

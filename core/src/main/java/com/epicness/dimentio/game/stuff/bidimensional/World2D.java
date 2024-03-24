@@ -20,24 +20,18 @@ import java.util.List;
 
 public class World2D extends Drawable2D {
 
-    private final Sprited topStripe, bottomStripe;// TODO: Color stripes according to level
+    private Border border;
     private final BricksGame bricksGame;
     private final Player player, playerMirror;
     private final Circle playerAttack, playerAttackMirror;
     private final SnapshotArray<Enemy> enemies, enemyMirrors;
     private final Circle[] enemySpawnCircles;
     private final List<DualSprited> foliage;
+    private final Sprited cover;
 
     public World2D(SharedAssets sharedAssets, GameAssets assets) {
-        topStripe = new Sprited(sharedAssets.getPixel());
-        topStripe.setSize(WORLD_2D_WIDTH, WORLD_2D_BORDER_HEIGHT);
-        topStripe.setY(CAMERA_HEIGHT - WORLD_2D_BORDER_HEIGHT);
-
-        bottomStripe = new Sprited(sharedAssets.getPixel());
-        bottomStripe.setSize(WORLD_2D_WIDTH, WORLD_2D_BORDER_HEIGHT);
-
+        border = new Border();
         bricksGame = new BricksGame(sharedAssets.getPixelFont(), assets);
-
         player = new Player(assets.getFadedCircularGlow());
         playerMirror = new Player(assets.getFadedCircularGlow());
 
@@ -48,12 +42,17 @@ public class World2D extends Drawable2D {
 
         enemies = new SnapshotArray<>();
         enemyMirrors = new SnapshotArray<>();
+
         enemySpawnCircles = new Circle[3];
         for (int i = 0; i < enemySpawnCircles.length; i++) {
             enemySpawnCircles[i] = new Circle(CLEAR);
             enemySpawnCircles[i].setThickness(5f);
         }
         foliage = new ArrayList<>();
+
+        cover = new Sprited(sharedAssets.getPixel());
+        cover.setSize(WORLD_2D_WIDTH, CAMERA_HEIGHT);
+        cover.setColor(CLEAR);
     }
 
     @Override
@@ -70,11 +69,11 @@ public class World2D extends Drawable2D {
         for (int i = 0; i < enemySpawnCircles.length; i++) {
             enemySpawnCircles[i].draw(shapeDrawerPlus);
         }
-        topStripe.draw(spriteBatch);
-        bottomStripe.draw(spriteBatch);
+        border.draw(shapeDrawerPlus);
         for (int i = 0; i < foliage.size(); i++) {
             foliage.get(i).draw(spriteBatch);
         }
+        cover.draw(spriteBatch);
     }
 
     public BricksGame getBricksGame() {
@@ -111,5 +110,9 @@ public class World2D extends Drawable2D {
 
     public List<DualSprited> getFoliage() {
         return foliage;
+    }
+
+    public Sprited getCover() {
+        return cover;
     }
 }

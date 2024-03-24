@@ -1,8 +1,9 @@
 package com.epicness.dimentio.game.logic.other;
 
 import static com.badlogic.gdx.graphics.Color.CLEAR;
-import static com.epicness.dimentio.game.constants.GameConstants.WORLD_2D_BORDER_HEIGHT;
 import static com.epicness.dimentio.game.constants.GameConstants.FOLIAGE_COLORS;
+import static com.epicness.dimentio.game.constants.GameConstants.WORLD_2D_BORDER_HEIGHT;
+import static com.epicness.dimentio.game.constants.GameConstants.WORLD_2D_TOP;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_WIDTH;
 
 import com.badlogic.gdx.graphics.Color;
@@ -21,18 +22,19 @@ public class FoliageHandler extends GameLogicHandler {
     @Override
     protected void init() {
         foliage = stuff.getWorld2D().getFoliage();
-        DualSprited leaf;
         float x = CAMERA_WIDTH;
         Color color = new Color();
         for (int i = 0; i < 4; i++, x += CAMERA_WIDTH * 2f) {
-            for (int j = 0; j < 30; j++) {
+            for (int j = 0; j < 60; j++) {
                 leaf = new DualSprited(assets.getLeaf1Inner(), assets.getLeaf1Border());
 
                 leaf.setX(x + MathUtils.random(CAMERA_WIDTH - leaf.getWidth()));
-                leaf.setY(WORLD_2D_BORDER_HEIGHT);
 
                 leaf.setOrigin(leaf.getWidth() / 2f, 0f);
-                leaf.setScale(MathUtils.random(0.5f, 2f));
+                float scale = MathUtils.random(0.5f, 2f);
+                leaf.setSize(leaf.getWidth() * scale, leaf.getHeight() * scale);
+
+                leaf.setY(MathUtils.randomBoolean() ? WORLD_2D_BORDER_HEIGHT : WORLD_2D_TOP - leaf.getHeight());
 
                 leaf.setFlip(MathUtils.randomBoolean(), MathUtils.randomBoolean());
 

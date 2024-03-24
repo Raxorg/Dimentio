@@ -51,5 +51,6 @@ public class EnemyMover extends GameLogicHandler {
             enemy.translate(MathUtils.cosDeg(degrees) * ENEMY_SPEED * delta, MathUtils.sinDeg(degrees) * ENEMY_SPEED * delta);
             mirror.translate(MathUtils.cosDeg(degrees) * ENEMY_SPEED * delta, MathUtils.sinDeg(degrees) * ENEMY_SPEED * delta);
         }
+        logic.get(EnemyCollisionHandler.class).checkCollisions();
     }
 }

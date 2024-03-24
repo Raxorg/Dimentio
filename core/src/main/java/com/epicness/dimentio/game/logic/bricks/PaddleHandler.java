@@ -63,7 +63,6 @@ public class PaddleHandler extends GameLogicHandler {
 
         if (player.getY() - PLAYER_INNER_RADIUS < PADDLE_TOP
             && player.getX() > paddle.x && player.getX() < paddle.x + paddle.width) {
-            System.out.println("ASD");
             player.setY(PADDLE_TOP + PLAYER_INNER_RADIUS);
             player.getSpeed().setAngleDeg(180f + (180f - player.getSpeed().angleDeg()));
         }
