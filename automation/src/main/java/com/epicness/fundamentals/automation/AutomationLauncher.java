@@ -5,5 +5,6 @@ public class AutomationLauncher {
     public static void main(String[] arg) {
         AssetAutomator.automate("Shared", "fundamentals");
         AssetAutomator.automate("Game", "dimentio", "game");
+        AssetAutomator.automate("Splash", "dimentio", "splash");
     }
 }

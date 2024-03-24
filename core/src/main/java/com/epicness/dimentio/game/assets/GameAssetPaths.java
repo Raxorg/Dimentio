@@ -40,8 +40,6 @@ public class GameAssetPaths {
 
     public static final AssetDescriptor<Sprite> ACTIVATOR3GLOW_SPRITE;
 
-    public static final AssetDescriptor<Sprite> CRAZYCATLOGO_SPRITE;
-
     public static final AssetDescriptor<Sprite> FADEDCIRCULARGLOW_SPRITE;
 
     public static final AssetDescriptor<Sprite> LEAF1BORDER_SPRITE;
@@ -65,7 +63,6 @@ public class GameAssetPaths {
         ASSETS.add(ACTIVATOR2GLOW_SPRITE = new AssetDescriptor<>("dimentio/game/images/activator2Glow.png", Sprite.class));
         ASSETS.add(ACTIVATOR3_SPRITE = new AssetDescriptor<>("dimentio/game/images/activator3.png", Sprite.class));
         ASSETS.add(ACTIVATOR3GLOW_SPRITE = new AssetDescriptor<>("dimentio/game/images/activator3Glow.png", Sprite.class));
-        ASSETS.add(CRAZYCATLOGO_SPRITE = new AssetDescriptor<>("dimentio/game/images/crazyCatLogo.jpg", Sprite.class));
         ASSETS.add(FADEDCIRCULARGLOW_SPRITE = new AssetDescriptor<>("dimentio/game/images/fadedCircularGlow.png", Sprite.class));
         ASSETS.add(LEAF1BORDER_SPRITE = new AssetDescriptor<>("dimentio/game/images/leaf1Border.png", Sprite.class));
         ASSETS.add(LEAF1INNER_SPRITE = new AssetDescriptor<>("dimentio/game/images/leaf1Inner.png", Sprite.class));

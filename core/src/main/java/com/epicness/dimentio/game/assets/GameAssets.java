@@ -38,8 +38,6 @@ public class GameAssets extends Assets {
 
     private Sprite activator3Glow;
 
-    private Sprite crazyCatLogo;
-
     private Sprite fadedCircularGlow;
 
     private Sprite leaf1Border;
@@ -67,7 +65,6 @@ public class GameAssets extends Assets {
         activator2Glow = get(ACTIVATOR2GLOW_SPRITE);
         activator3 = get(ACTIVATOR3_SPRITE);
         activator3Glow = get(ACTIVATOR3GLOW_SPRITE);
-        crazyCatLogo = get(CRAZYCATLOGO_SPRITE);
         fadedCircularGlow = get(FADEDCIRCULARGLOW_SPRITE);
         leaf1Border = get(LEAF1BORDER_SPRITE);
         leaf1Inner = get(LEAF1INNER_SPRITE);
@@ -131,10 +128,6 @@ public class GameAssets extends Assets {
 
     public Sprite getActivator3Glow() {
         return activator3Glow;
-    }
-
-    public Sprite getCrazyCatLogo() {
-        return crazyCatLogo;
     }
 
     public Sprite getFadedCircularGlow() {
