@@ -12,6 +12,7 @@ public class LifeHandler extends GameLogicHandler {
 
     private DualSprited[] lives;
     private int livesLeft;
+    private boolean enabled;
 
     @Override
     protected void init() {
@@ -21,9 +22,12 @@ public class LifeHandler extends GameLogicHandler {
             lives[i].setForegroundColor(BLACK);
         }
         livesLeft = 4;
+        enabled = true;
     }
 
     public void loseLife() {
+        if (!enabled) return;
+
         livesLeft--;
         lives[livesLeft].setColor(CLEAR);
         if (livesLeft == 0) {
@@ -32,11 +36,15 @@ public class LifeHandler extends GameLogicHandler {
         logic.get(CoverHandler.class).showCover();
     }
 
-    public void gainLife() {
+    public void gainLives() {
         if (livesLeft == 4) return;
 
         lives[livesLeft].setBackgroundColor(WHITE);
         lives[livesLeft].setForegroundColor(BLACK);
         livesLeft++;
+    }
+
+    public void disable() {
+        enabled = false;
     }
 }

@@ -79,6 +79,7 @@ public class ActivationHandler extends GameLogicHandler {
             logic.get(PaddleHandler.class).showPaddle(playerCenter.x);
             logic.get(BrickHandler.class).spawnBricks(activatedActivator.level);
             logic.get(LimitHandler.class).showLimits(playerCenter.x, activatedActivator.level.color);
+            player.setBaseColor(activatedActivator.level.color);
             auxVector.set(playerCenter.x, PLAYER_STARTING_PADDLE_Y);
             step1 = false;
             progress = 0f;

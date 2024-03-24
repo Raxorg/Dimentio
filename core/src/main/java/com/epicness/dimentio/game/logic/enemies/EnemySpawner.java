@@ -28,7 +28,9 @@ public class EnemySpawner extends GameLogicHandler {
     @Override
     protected void init() {
         enemies = stuff.getWorld2D().getEnemies();
+        enemies.clear();
         enemyMirrors = stuff.getWorld2D().getEnemyMirrors();
+        enemyMirrors.clear();
         enemySpawnCircles = stuff.getWorld2D().getEnemySpawnCircles();
         spawnTime = effectTime = 0f;
         auxColor = new Color();

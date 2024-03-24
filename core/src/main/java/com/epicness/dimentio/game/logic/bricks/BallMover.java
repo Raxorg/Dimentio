@@ -1,6 +1,7 @@
 package com.epicness.dimentio.game.logic.bricks;
 
 import static com.badlogic.gdx.Input.Keys.SPACE;
+import static com.badlogic.gdx.graphics.Color.WHITE;
 import static com.epicness.dimentio.game.constants.GameConstants.BRICK_BALL_SPEED;
 
 import com.badlogic.gdx.math.Intersector;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.SnapshotArray;
 import com.epicness.dimentio.game.logic.GameLogicHandler;
+import com.epicness.dimentio.game.logic.other.EndingHandler;
 import com.epicness.dimentio.game.logic.player.AttackCooldownHandler;
 import com.epicness.dimentio.game.logic.player.LifeHandler;
 import com.epicness.dimentio.game.logic.player.PlayerMover;
@@ -62,7 +64,10 @@ public class BallMover extends GameLogicHandler {
                     logic.get(ActivatorAnimator.class).setProximityFadeEnabled(true);
                     logic.get(PlayerMover.class).setEnabled(true);
                     logic.get(PaddleHandler.class).hidePaddle();
-                    logic.get(LifeHandler.class).gainLife();
+                    logic.get(LifeHandler.class).gainLives();
+                    logic.get(LifeHandler.class).gainLives();
+                    logic.get(EndingHandler.class).completeLevel();
+                    player.setBaseColor(WHITE);
                     assets.getFuturistic().play();
                     movementEnabled = false;
                 }

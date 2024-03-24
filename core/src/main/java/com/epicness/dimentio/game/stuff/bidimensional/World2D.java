@@ -20,14 +20,14 @@ import java.util.List;
 
 public class World2D extends Drawable2D {
 
-    private Border border;
+    private final Border border;
     private final BricksGame bricksGame;
     private final Player player, playerMirror;
     private final Circle playerAttack, playerAttackMirror;
     private final SnapshotArray<Enemy> enemies, enemyMirrors;
     private final Circle[] enemySpawnCircles;
     private final List<DualSprited> foliage;
-    private final Sprited cover;
+    private final Sprited ending, endingMirror, cover;
 
     public World2D(SharedAssets sharedAssets, GameAssets assets) {
         border = new Border();
@@ -50,6 +50,9 @@ public class World2D extends Drawable2D {
         }
         foliage = new ArrayList<>();
 
+        ending = new Sprited(assets.getEnding());
+        endingMirror= new Sprited(assets.getEnding());
+
         cover = new Sprited(sharedAssets.getPixel());
         cover.setSize(WORLD_2D_WIDTH, CAMERA_HEIGHT);
         cover.setColor(CLEAR);
@@ -57,6 +60,8 @@ public class World2D extends Drawable2D {
 
     @Override
     public void draw(SpriteBatch spriteBatch, ShapeDrawerPlus shapeDrawerPlus) {
+        ending.draw(spriteBatch);
+        endingMirror.draw(spriteBatch);
         bricksGame.draw(spriteBatch, shapeDrawerPlus);
         player.draw(spriteBatch, shapeDrawerPlus);
         playerMirror.draw(spriteBatch, shapeDrawerPlus);
@@ -74,6 +79,14 @@ public class World2D extends Drawable2D {
             foliage.get(i).draw(spriteBatch);
         }
         cover.draw(spriteBatch);
+    }
+
+    public Sprited getEnding() {
+        return ending;
+    }
+
+    public Sprited getEndingMirror() {
+        return endingMirror;
     }
 
     public BricksGame getBricksGame() {

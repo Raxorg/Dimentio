@@ -20,9 +20,7 @@ public class GlowHandler extends GameLogicHandler {
     protected void init() {
         player = stuff.getWorld2D().getPlayer();
         mirror = stuff.getWorld2D().getPlayerMirror();
-        player.setGlowColor(WHITE);
         player.setBaseColor(WHITE);
-        mirror.setGlowColor(WHITE);
         mirror.setBaseColor(WHITE);
         progress = 0f;
         color = new Color();
@@ -34,7 +32,7 @@ public class GlowHandler extends GameLogicHandler {
         if (progress == 1f) fadingIn = false;
 
         progress = MathUtils.clamp(progress + (fadingIn ? delta: -delta), 0f, 1f);
-        color.set(WHITE).lerp(CLEAR, Interpolation.exp10In.apply(progress));
+        color.set(player.getBaseColor()).lerp(CLEAR, Interpolation.exp10In.apply(progress));
         player.setGlowColor(color);
         mirror.setGlowColor(color);
     }

@@ -40,7 +40,7 @@ public class GameConstants {
     // Paddle
     public static final float PADDLE_WIDTH = 200f;
     public static final float PADDLE_HEIGHT = 40f;
-    public static final float PADDLE_SPEED = 1000f;
+    public static final float PADDLE_SPEED = 1200f;
     public static final float PADDLE_Y = WORLD_2D_BORDER_HEIGHT;
     public static final float PADDLE_TOP = PADDLE_Y + PADDLE_HEIGHT;
 
@@ -54,7 +54,7 @@ public class GameConstants {
     public static final float MIN_PLAYER_Y = WORLD_2D_BORDER_HEIGHT + PLAYER_INNER_RADIUS;
     public static final float MAX_PLAYER_Y = CAMERA_HEIGHT - WORLD_2D_BORDER_HEIGHT - PLAYER_INNER_RADIUS;
     public static final float PLAYER_STARTING_PADDLE_Y = WORLD_2D_BORDER_HEIGHT + PADDLE_HEIGHT + PLAYER_INNER_RADIUS;
-    public static final float ATTACK_COOLDOWN = 1.8f;
+    public static final float ATTACK_COOLDOWN = 1.45f;
 
     // Bricks
     public static final float BRICK_WIDTH = 160f;
@@ -67,7 +67,7 @@ public class GameConstants {
     public static final float GREEN_START_X = CAMERA_WIDTH * 2f;
     public static final float BLUE_START_X = CAMERA_WIDTH * 4f;
     public static final float YELLOW_START_X = CAMERA_WIDTH * 6f;
-    public static final float BRICK_BALL_SPEED = 1000f;
+    public static final float BRICK_BALL_SPEED = 900f;
 
     // Enemies
     public static final float ENEMY_SIZE = 150f;
