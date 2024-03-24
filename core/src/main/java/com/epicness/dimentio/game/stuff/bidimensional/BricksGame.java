@@ -40,7 +40,7 @@ public class BricksGame {
         }
         bricks = new SnapshotArray<>();
         paddle = new Rectangle(0f, PADDLE_Y, PADDLE_WIDTH, PADDLE_HEIGHT, WHITE, CLEAR);
-        leftLimit = new Line(WORLD_2D_WIDTH - 2.5f, WORLD_2D_BORDER_HEIGHT, WORLD_2D_WIDTH - 2.5f, CAMERA_HEIGHT - WORLD_2D_BORDER_HEIGHT);
+        leftLimit = new Line(0, WORLD_2D_BORDER_HEIGHT, 0, CAMERA_HEIGHT - WORLD_2D_BORDER_HEIGHT);
         rightLimit = new Line(CAMERA_WIDTH + 2.5f, WORLD_2D_BORDER_HEIGHT, CAMERA_WIDTH + 2.5f, CAMERA_HEIGHT - WORLD_2D_BORDER_HEIGHT);
         levelText = new Text(font);
     }
@@ -58,6 +58,10 @@ public class BricksGame {
         levelText.draw(spriteBatch);
     }
 
+    public Activator[] getActivators() {
+        return activators;
+    }
+
     public SnapshotArray<Rectangle> getBricks() {
         return bricks;
     }
@@ -66,11 +70,15 @@ public class BricksGame {
         return paddle;
     }
 
-    public Text getLevelText() {
-        return levelText;
+    public Line getLeftLimit() {
+        return leftLimit;
     }
 
-    public Activator[] getActivators() {
-        return activators;
+    public Line getRightLimit() {
+        return rightLimit;
+    }
+
+    public Text getLevelText() {
+        return levelText;
     }
 }

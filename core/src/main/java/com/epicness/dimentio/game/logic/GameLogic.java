@@ -3,7 +3,9 @@ package com.epicness.dimentio.game.logic;
 import com.epicness.dimentio.game.logic.bricks.ActivationHandler;
 import com.epicness.dimentio.game.logic.bricks.ActivatorAnimator;
 import com.epicness.dimentio.game.logic.bricks.BallMover;
+import com.epicness.dimentio.game.logic.bricks.BoundsHandler;
 import com.epicness.dimentio.game.logic.bricks.BrickHandler;
+import com.epicness.dimentio.game.logic.bricks.LimitHandler;
 import com.epicness.dimentio.game.logic.bricks.PaddleHandler;
 import com.epicness.dimentio.game.logic.enemies.EnemyMover;
 import com.epicness.dimentio.game.logic.enemies.EnemySpawner;
@@ -46,7 +48,9 @@ public class GameLogic extends Logic {
         registerHandler(activationHandler = new ActivationHandler());
         registerHandler(activatorAnimator = new ActivatorAnimator());
         registerHandler(ballMover = new BallMover());
+        registerHandler(new BoundsHandler());
         registerHandler(brickHandler = new BrickHandler());
+        registerHandler(new LimitHandler());
         registerHandler(paddleHandler = new PaddleHandler());
         // Enemies
         registerHandler(enemyMover = new EnemyMover());
@@ -69,9 +73,9 @@ public class GameLogic extends Logic {
         // Bricks
         activationHandler.update();
         activatorAnimator.update();
+        paddleHandler.update();
         ballMover.update();
         brickHandler.update();
-        paddleHandler.update();
         // Enemies
         enemyMover.update();
         enemySpawner.update();

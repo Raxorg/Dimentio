@@ -8,9 +8,8 @@ import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-public class Circle implements Transformable {
+public class Circle extends com.badlogic.gdx.math.Circle implements Transformable {
 
-    public float x, y, radius;
     private final Color borderColor, fillColor;
     private float thickness;
 
@@ -75,14 +74,6 @@ public class Circle implements Transformable {
     public void draw(ShapeRenderer shapeRenderer) {
         shapeRenderer.setColor(borderColor);
         shapeRenderer.circle(x, y, radius);
-    }
-
-    public boolean overlaps(Circle other) {
-        float dx = x - other.x;
-        float dy = y - other.y;
-        float distance = dx * dx + dy * dy;
-        float radiusSum = radius + other.radius;
-        return distance < radiusSum * radiusSum;
     }
 
     public float getStartX() {
@@ -153,10 +144,6 @@ public class Circle implements Transformable {
     @Override
     public float getHeight() {
         return radius * 2f;
-    }
-
-    public void setRadius(float radius) {
-        this.radius = radius;
     }
 
     public Color getBorderColor() {

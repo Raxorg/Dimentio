@@ -1,80 +1,107 @@
 package com.epicness.dimentio.game.logic.bricks;
 
+import static com.badlogic.gdx.Input.Keys.SPACE;
 import static com.epicness.dimentio.game.constants.GameConstants.BRICK_BALL_SPEED;
-import static com.epicness.dimentio.game.constants.GameConstants.PADDLE_TOP;
-import static com.epicness.dimentio.game.constants.GameConstants.PLAYER_INNER_RADIUS;
-import static com.epicness.dimentio.game.constants.GameConstants.WORLD_2D_BORDER_HEIGHT;
-import static com.epicness.dimentio.game.constants.GameConstants.WORLD_2D_TOP;
 
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.SnapshotArray;
 import com.epicness.dimentio.game.logic.GameLogicHandler;
+import com.epicness.dimentio.game.logic.player.AttackCooldownHandler;
+import com.epicness.dimentio.game.logic.player.PlayerMover;
 import com.epicness.dimentio.game.stuff.bidimensional.Player;
+import com.epicness.fundamentals.stuff.shapes.bidimensional.Rectangle;
 
 public class BallMover extends GameLogicHandler {
 
     private Player player;
     private Rectangle paddle;
-    private boolean enabled;
-    private float angle;
-    private float minX, maxX;
+    private SnapshotArray<Rectangle> bricks;
+    private Vector2 auxPlayerSpeed;
+    private boolean attached, movementEnabled;
 
     @Override
     protected void init() {
         player = stuff.getWorld2D().getPlayer();
         paddle = stuff.getWorld2D().getBricksGame().getPaddle();
-        enabled = false;
+        bricks = stuff.getWorld2D().getBricksGame().getBricks();
+        auxPlayerSpeed = new Vector2();
+        movementEnabled = false;
     }
 
-    public void launchBall(float minX, float maxX) {
-        this.minX = minX;
-        this.maxX = maxX;
-        angle = MathUtils.random(50f, 130f);
-        enabled = true;
+    public void launchBall() {
+        float angle = MathUtils.random(50f, 130f);
+        player.getSpeed().set(MathUtils.cosDeg(angle) * BRICK_BALL_SPEED, MathUtils.sinDeg(angle) * BRICK_BALL_SPEED);
+        movementEnabled = true;
     }
 
     @Override
     protected void update(float delta) {
-        if (!enabled) return;
+        if (attached) player.setX(paddle.x + paddle.width / 2f);
 
-        player.translateX(MathUtils.cosDeg(angle) * BRICK_BALL_SPEED * delta);
-        player.translateY(MathUtils.sinDeg(angle) * BRICK_BALL_SPEED * delta);
+        if (!movementEnabled) return;
+
+        auxPlayerSpeed.set(player.getSpeed()).scl(delta);
+        player.translate(auxPlayerSpeed);
         checkCollisions();
-        checkBounds();
+        logic.get(BoundsHandler.class).checkBounds();
     }
 
     private void checkCollisions() {
-
+        Rectangle brick;
+        bricks.begin();
+        for (int i = 0; i < bricks.size; i++) {
+            brick = bricks.get(i);
+            if (Intersector.overlaps(player.getCircle(), brick)) {
+                collide(brick);
+                if (bricks.size == 0) {
+                    logic.get(LimitHandler.class).hideLimits();
+                    logic.get(ActivationHandler.class).completeLastActivator();
+                    logic.get(ActivatorAnimator.class).setProximityFadeEnabled(true);
+                    logic.get(PlayerMover.class).setEnabled(true);
+                    logic.get(PaddleHandler.class).hidePaddle();
+                    movementEnabled = false;
+                }
+                break;
+            }
+        }
+        bricks.end();
     }
 
-    private void checkBounds() {
-        if (player.getY() + PLAYER_INNER_RADIUS > WORLD_2D_TOP) {
-            player.setY(WORLD_2D_TOP - PLAYER_INNER_RADIUS);
-            angle = 180f + (180f - angle);
+    private void collide(Rectangle brick) {
+        float xTranslation = auxPlayerSpeed.x;
+        float yTranslation = auxPlayerSpeed.y;
+
+        player.translateX(-xTranslation);
+        if (!Intersector.overlaps(player.getCircle(), brick)) {
+            player.getSpeed().setAngleDeg(270f + (270f - player.getSpeed().angleDeg()));
         }
-        if (player.getY() - PLAYER_INNER_RADIUS < PADDLE_TOP
-            && player.getX() > paddle.x && player.getX() < paddle.x + paddle.width) {
-            player.setY(PADDLE_TOP + PLAYER_INNER_RADIUS);
-            angle = 180f + (180f - angle);
+        player.translateX(xTranslation);
+
+        player.translateY(-yTranslation);
+        if (!Intersector.overlaps(player.getCircle(), brick)) {
+            player.getSpeed().setAngleDeg(180f + (180f - player.getSpeed().angleDeg()));
         }
-        if (player.getY() + PLAYER_INNER_RADIUS < WORLD_2D_BORDER_HEIGHT) {
-            loseLife();
-        }
-        if (player.getX() - PLAYER_INNER_RADIUS < minX) {
-            player.setX(minX + PLAYER_INNER_RADIUS);
-            angle = 270f + (270f - angle);
-        }
-        if (player.getX() + PLAYER_INNER_RADIUS > maxX) {
-            player.setX(maxX - PLAYER_INNER_RADIUS);
-            angle = 270f + (270f - angle);
+        player.translateY(yTranslation);
+
+        bricks.removeValue(brick, true);
+    }
+
+    @Override
+    public void keyDown(int keycode) {
+        if (keycode == SPACE && !logic.get(AttackCooldownHandler.class).isOnCooldown()
+            && logic.get(PaddleHandler.class).isMovementEnabled() && attached) {
+            attached = false;
+            launchBall();
         }
     }
 
-    private void loseLife() {
-        // TODO: 3/23/2024
+    public void attachToPaddle() {
+        attached = true;
     }
 
-    public void disable() {
-        enabled = false;
+    public void disableMovement() {
+        movementEnabled = false;
     }
 }

@@ -16,7 +16,7 @@ public class ActivationHandler extends GameLogicHandler {
     private Player player;
     private Vector2 playerCenter, auxVector, lerpVector;
     private float progress;
-    private boolean activating, step1;
+    private boolean activating, step1, enabled;
 
     @Override
     protected void init() {
@@ -31,10 +31,11 @@ public class ActivationHandler extends GameLogicHandler {
         lerpVector = new Vector2();
         progress = 0f;
         activating = false;
+        enabled = true;
     }
 
     public void checkActivation() {
-        if (activating) return;
+        if (activating || !enabled) return;
 
         float distance;
         for (int i = 0; i < activators.length; i++) {
@@ -42,6 +43,7 @@ public class ActivationHandler extends GameLogicHandler {
             if (!activators[i].isActivated() && distance < 145f) {
                 activatedActivator = activators[i];
                 beginActivation();
+                enabled = false;
                 return;
             }
         }
@@ -76,6 +78,7 @@ public class ActivationHandler extends GameLogicHandler {
             player.getCenter(playerCenter);
             logic.get(PaddleHandler.class).showPaddle(playerCenter.x);
             logic.get(BrickHandler.class).spawnBricks(activatedActivator.level);
+            logic.get(LimitHandler.class).showLimits(playerCenter.x, activatedActivator.level.color);
             auxVector.set(playerCenter.x, PLAYER_STARTING_PADDLE_Y);
             step1 = false;
             progress = 0f;
@@ -89,5 +92,12 @@ public class ActivationHandler extends GameLogicHandler {
         if (progress == 1f) {
             activating = false;
         }
+    }
+
+    public void completeLastActivator() {
+        activatedActivator.setActivated(true);
+        activatedActivator.setSpeedFactor(1f);
+        activatedActivator.setAlpha(1f);
+        enabled = true;
     }
 }

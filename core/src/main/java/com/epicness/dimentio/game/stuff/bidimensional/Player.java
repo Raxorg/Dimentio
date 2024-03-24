@@ -98,6 +98,10 @@ public class Player implements Transformable {
         return speed;
     }
 
+    public Circle getCircle() {
+        return circle;
+    }
+
     public Color getGlowColor() {
         return glow.getColor();
     }

@@ -28,6 +28,7 @@ public class BrickHandler extends GameLogicHandler {
     private Color lerpColor, levelColor;
     private float progress;
     private boolean fadingIn;
+    private Level lastLevel;
 
     @Override
     protected void init() {
@@ -54,6 +55,7 @@ public class BrickHandler extends GameLogicHandler {
                 break;
         }
         showBricks();
+        lastLevel = level;
     }
 
     private void showBricks() {
@@ -131,5 +133,9 @@ public class BrickHandler extends GameLogicHandler {
         }
         if (progress == 1f)
             fadingIn = false;
+    }
+
+    public void restartLevel() {
+        spawnBricks(lastLevel);
     }
 }
