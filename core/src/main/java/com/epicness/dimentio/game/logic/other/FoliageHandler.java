@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.epicness.dimentio.game.logic.GameLogicHandler;
 import com.epicness.fundamentals.stuff.DualSprited;
+import com.epicness.fundamentals.utils.OSUtils;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class FoliageHandler extends GameLogicHandler {
         float x = CAMERA_WIDTH;
         Color color = new Color();
         for (int i = 0; i < 4; i++, x += CAMERA_WIDTH * 2f) {
-            for (int j = 0; j < 60; j++) {
+            for (int j = 0; j < 15; j++) {
                 leaf = new DualSprited(assets.getLeaf1Inner(), assets.getLeaf1Border());
 
                 leaf.setX(x + MathUtils.random(CAMERA_WIDTH - leaf.getWidth()));
@@ -51,6 +52,8 @@ public class FoliageHandler extends GameLogicHandler {
 
     @Override
     protected void update(float delta) {
+        if (OSUtils.isHTML()) return;
+
         time += delta / 5f;
         float offset, a;
         Color color;
