@@ -30,6 +30,7 @@ public class BallMover extends GameLogicHandler {
         paddle = stuff.getWorld2D().getBricksGame().getPaddle();
         bricks = stuff.getWorld2D().getBricksGame().getBricks();
         auxPlayerSpeed = new Vector2();
+        attached = false;
         movementEnabled = false;
     }
 
