@@ -8,23 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.epicness.fundamentals.assets.Assets;
 
 public class GameAssets extends Assets {
-    private Sprite[] enemyAnimFrames;
-
-    private Sprite enemyFrames;
-
-    private Music KOLMOSTASecondChance;
-
-    private Music KOLMOSTCountingDownTheHours;
-
-    private Music KOLMOSTTitle;
-
-    private Sound dead;
-
-    private Sound futuristic;
-
-    private Sound hit;
-
-    private Sound wisp;
+    private Sprite gameAtlas;
 
     private Sprite activator1;
 
@@ -40,11 +24,31 @@ public class GameAssets extends Assets {
 
     private Sprite ending;
 
+    private Sprite[] enemyFrames;
+
+    private Sprite enemy_1;
+
+    private Sprite enemy_2;
+
     private Sprite fadedCircularGlow;
 
     private Sprite leaf1Border;
 
     private Sprite leaf1Inner;
+
+    private Music KOLMOSTASecondChance;
+
+    private Music KOLMOSTCountingDownTheHours;
+
+    private Music KOLMOSTTitle;
+
+    private Sound dead;
+
+    private Sound futuristic;
+
+    private Sound hit;
+
+    private Sound wisp;
 
     public GameAssets() {
         super(ASSETS);
@@ -52,8 +56,20 @@ public class GameAssets extends Assets {
 
     @Override
     public void initializeAssets() {
-        enemyAnimFrames = get(ENEMYANIMFRAMES_ANIMATION);
-        enemyFrames = get(ENEMYFRAMES_SPRITE);
+        gameAtlas = new Sprite(get(GAME_ATLAS).getTextures().first());
+        activator1 = get(GAME_ATLAS).createSprite("activator1");
+        activator1Glow = get(GAME_ATLAS).createSprite("activator1Glow");
+        activator2 = get(GAME_ATLAS).createSprite("activator2");
+        activator2Glow = get(GAME_ATLAS).createSprite("activator2Glow");
+        activator3 = get(GAME_ATLAS).createSprite("activator3");
+        activator3Glow = get(GAME_ATLAS).createSprite("activator3Glow");
+        ending = get(GAME_ATLAS).createSprite("ending");
+        enemyFrames = get(GAME_ATLAS).createSprites("enemy").toArray();
+        enemy_1 = get(GAME_ATLAS).createSprite("enemy", 1);
+        enemy_2 = get(GAME_ATLAS).createSprite("enemy", 2);
+        fadedCircularGlow = get(GAME_ATLAS).createSprite("fadedCircularGlow");
+        leaf1Border = get(GAME_ATLAS).createSprite("leaf1Border");
+        leaf1Inner = get(GAME_ATLAS).createSprite("leaf1Inner");
         KOLMOSTASecondChance = get(KOLMOSTASECONDCHANCE_MUSIC);
         KOLMOSTCountingDownTheHours = get(KOLMOSTCOUNTINGDOWNTHEHOURS_MUSIC);
         KOLMOSTTitle = get(KOLMOSTTITLE_MUSIC);
@@ -61,52 +77,10 @@ public class GameAssets extends Assets {
         futuristic = get(FUTURISTIC_SOUND);
         hit = get(HIT_SOUND);
         wisp = get(WISP_SOUND);
-        activator1 = get(ACTIVATOR1_SPRITE);
-        activator1Glow = get(ACTIVATOR1GLOW_SPRITE);
-        activator2 = get(ACTIVATOR2_SPRITE);
-        activator2Glow = get(ACTIVATOR2GLOW_SPRITE);
-        activator3 = get(ACTIVATOR3_SPRITE);
-        activator3Glow = get(ACTIVATOR3GLOW_SPRITE);
-        ending = get(ENDING_SPRITE);
-        fadedCircularGlow = get(FADEDCIRCULARGLOW_SPRITE);
-        leaf1Border = get(LEAF1BORDER_SPRITE);
-        leaf1Inner = get(LEAF1INNER_SPRITE);
     }
 
-    public Sprite[] getEnemyAnimFrames() {
-        return enemyAnimFrames;
-    }
-
-    public Sprite getEnemyFrames() {
-        return enemyFrames;
-    }
-
-    public Music getKOLMOSTASecondChance() {
-        return KOLMOSTASecondChance;
-    }
-
-    public Music getKOLMOSTCountingDownTheHours() {
-        return KOLMOSTCountingDownTheHours;
-    }
-
-    public Music getKOLMOSTTitle() {
-        return KOLMOSTTitle;
-    }
-
-    public Sound getDead() {
-        return dead;
-    }
-
-    public Sound getFuturistic() {
-        return futuristic;
-    }
-
-    public Sound getHit() {
-        return hit;
-    }
-
-    public Sound getWisp() {
-        return wisp;
+    public Sprite getGameAtlas() {
+        return gameAtlas;
     }
 
     public Sprite getActivator1() {
@@ -137,6 +111,18 @@ public class GameAssets extends Assets {
         return ending;
     }
 
+    public Sprite[] getEnemyFrames() {
+        return enemyFrames;
+    }
+
+    public Sprite getEnemy_1() {
+        return enemy_1;
+    }
+
+    public Sprite getEnemy_2() {
+        return enemy_2;
+    }
+
     public Sprite getFadedCircularGlow() {
         return fadedCircularGlow;
     }
@@ -147,5 +133,33 @@ public class GameAssets extends Assets {
 
     public Sprite getLeaf1Inner() {
         return leaf1Inner;
+    }
+
+    public Music getKOLMOSTASecondChance() {
+        return KOLMOSTASecondChance;
+    }
+
+    public Music getKOLMOSTCountingDownTheHours() {
+        return KOLMOSTCountingDownTheHours;
+    }
+
+    public Music getKOLMOSTTitle() {
+        return KOLMOSTTitle;
+    }
+
+    public Sound getDead() {
+        return dead;
+    }
+
+    public Sound getFuturistic() {
+        return futuristic;
+    }
+
+    public Sound getHit() {
+        return hit;
+    }
+
+    public Sound getWisp() {
+        return wisp;
     }
 }

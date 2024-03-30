@@ -51,8 +51,8 @@ public class EnemySpawner extends GameLogicHandler {
     private void spawnEnemy() {
         spawnX = MathUtils.random(3) * CAMERA_WIDTH * 2f + CAMERA_WIDTH * 1.5f - ENEMY_SIZE / 2f;
 
-        Enemy enemy = new Enemy(assets.getEnemyAnimFrames());
-        Enemy mirror = new Enemy(assets.getEnemyAnimFrames());
+        Enemy enemy = new Enemy(assets.getEnemyFrames());
+        Enemy mirror = new Enemy(assets.getEnemyFrames());
         enemy.setPosition(spawnX, ENEMY_SPAWN_Y);
         mirror.setPosition(spawnX, ENEMY_SPAWN_Y);
         enemies.add(enemy);

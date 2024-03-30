@@ -20,8 +20,6 @@ public abstract class Renderer3D<S extends Stuff<?>> extends Renderer<S> {
         modelBatch = new ModelBatch();
     }
 
-    public abstract void render();
-
     public PerspectiveCamera getPerspectiveCamera() {
         return perspectiveCamera;
     }

@@ -1,0 +1,89 @@
+game.png
+size: 3502, 1502
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+activator1
+  rotate: false
+  xy: 640, 0
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+activator1Glow
+  rotate: false
+  xy: 1142, 0
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+activator2
+  rotate: false
+  xy: 1644, 0
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+activator2Glow
+  rotate: false
+  xy: 2146, 0
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+activator3
+  rotate: false
+  xy: 2648, 0
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+activator3Glow
+  rotate: false
+  xy: 0, 502
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+ending
+  rotate: false
+  xy: 502, 502
+  size: 3000, 1000
+  orig: 3000, 1000
+  offset: 0, 0
+  index: -1
+enemy
+  rotate: false
+  xy: 236, 0
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: 1
+enemy
+  rotate: false
+  xy: 438, 0
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: 2
+fadedCircularGlow
+  rotate: false
+  xy: 106, 0
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+leaf1Border
+  rotate: false
+  xy: 0, 0
+  size: 51, 82
+  orig: 51, 82
+  offset: 0, 0
+  index: -1
+leaf1Inner
+  rotate: false
+  xy: 53, 0
+  size: 51, 82
+  orig: 51, 82
+  offset: 0, 0
+  index: -1
