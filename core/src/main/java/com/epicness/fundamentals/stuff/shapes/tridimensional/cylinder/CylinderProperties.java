@@ -1,6 +1,5 @@
 package com.epicness.fundamentals.stuff.shapes.tridimensional.cylinder;
 
-
 import static com.epicness.fundamentals.constants.Constants3D.MATERIAL_ID;
 
 import com.badlogic.gdx.graphics.GL20;

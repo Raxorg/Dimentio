@@ -38,8 +38,8 @@ public class GameConstants {
     public static final Level[] LEVELS = new Level[]{Level.RED, Level.GREEN, Level.BLUE, Level.YELLOW};
 
     // Paddle
-    public static final float PADDLE_WIDTH = 200f;
-    public static final float PADDLE_HEIGHT = 40f;
+    public static final float PADDLE_WIDTH = 220f;
+    public static final float PADDLE_HEIGHT = 45f;
     public static final float PADDLE_SPEED = 1200f;
     public static final float PADDLE_Y = WORLD_2D_BORDER_HEIGHT;
     public static final float PADDLE_TOP = PADDLE_Y + PADDLE_HEIGHT;
@@ -67,7 +67,7 @@ public class GameConstants {
     public static final float GREEN_START_X = CAMERA_WIDTH * 2f;
     public static final float BLUE_START_X = CAMERA_WIDTH * 4f;
     public static final float YELLOW_START_X = CAMERA_WIDTH * 6f;
-    public static final float BRICK_BALL_SPEED = 900f;
+    public static final float BRICK_BALL_SPEED = 800f;
 
     // Enemies
     public static final float ENEMY_SIZE = 150f;
