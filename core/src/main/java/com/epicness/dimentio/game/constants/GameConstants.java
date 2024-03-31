@@ -38,7 +38,7 @@ public class GameConstants {
     public static final Level[] LEVELS = new Level[]{Level.RED, Level.GREEN, Level.BLUE, Level.YELLOW};
 
     // Paddle
-    public static final float PADDLE_WIDTH = 220f;
+    public static final float PADDLE_WIDTH = 230f;
     public static final float PADDLE_HEIGHT = 45f;
     public static final float PADDLE_SPEED = 1200f;
     public static final float PADDLE_Y = WORLD_2D_BORDER_HEIGHT;

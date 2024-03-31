@@ -1,5 +1,6 @@
 package com.epicness.dimentio.game.logic;
 
+import com.badlogic.gdx.Gdx;
 import com.epicness.dimentio.game.logic.bricks.ActivationHandler;
 import com.epicness.dimentio.game.logic.bricks.ActivatorAnimator;
 import com.epicness.dimentio.game.logic.bricks.BallMover;
@@ -80,6 +81,7 @@ public class GameLogic extends Logic {
 
     @Override
     public void update() {
+        if (Gdx.graphics.getDeltaTime() >= 0.1f) return;
         // Bricks
         activationHandler.update();
         activatorAnimator.update();

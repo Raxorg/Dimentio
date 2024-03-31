@@ -62,9 +62,13 @@ public class PaddleHandler extends GameLogicHandler {
         handleMovement(delta);
 
         if (player.getY() - PLAYER_INNER_RADIUS < PADDLE_TOP
-            && player.getX() > paddle.x && player.getX() < paddle.x + paddle.width) {
+            && player.getX() + PLAYER_INNER_RADIUS >= paddle.x && player.getX() - PLAYER_INNER_RADIUS <= paddle.x + paddle.width) {
             player.setY(PADDLE_TOP + PLAYER_INNER_RADIUS);
-            player.getSpeed().setAngleDeg(180f + (180f - player.getSpeed().angleDeg()));
+            if (player.getX() < paddle.x + PADDLE_WIDTH / 2f) {
+                player.getSpeed().setAngleDeg(130f);
+            } else {
+                player.getSpeed().setAngleDeg(50f);
+            }
         }
     }
 
