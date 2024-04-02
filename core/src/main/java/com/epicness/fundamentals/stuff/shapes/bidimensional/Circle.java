@@ -2,7 +2,6 @@ package com.epicness.fundamentals.stuff.shapes.bidimensional;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
 import com.epicness.fundamentals.renderer.ShapeDrawerPlus;
 import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
@@ -76,34 +75,24 @@ public class Circle extends com.badlogic.gdx.math.Circle implements Transformabl
         shapeRenderer.circle(x, y, radius);
     }
 
-    public float getStartX() {
+    @Override
+    public float getX() {
         return x - radius;
     }
 
-    public float getEndX() {
-        return x + radius;
-    }
-
-    public float getStartY() {
-        return y - radius;
-    }
-
-    public float getEndY() {
-        return y + radius;
-    }
-
-    public Vector2 getCenter(Vector2 result) {
-        return result.set(x, y);
-    }
-
     @Override
-    public float getX() {
-        return x;
+    public void setX(float x) {
+        Transformable.super.setX(x);
     }
 
     @Override
     public float getY() {
-        return y;
+        return y - radius;
+    }
+
+    @Override
+    public void setY(float y) {
+        Transformable.super.setY(y);
     }
 
     @Override
@@ -167,8 +156,7 @@ public class Circle extends com.badlogic.gdx.math.Circle implements Transformabl
         fillColor.set(color);
     }
 
-    public Circle setThickness(float thickness) {
+    public void setThickness(float thickness) {
         this.thickness = thickness;
-        return this;
     }
 }

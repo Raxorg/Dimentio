@@ -12,7 +12,15 @@ public interface Transformable extends Movable, Scalable, Rotatable {
         return getY() + getHeight();
     }
 
+    default float getCenterX() {
+        return getX() + getWidth() / 2f;
+    }
+
+    default float getCenterY() {
+        return getY() + getHeight() / 2f;
+    }
+
     default Vector2 getCenter(Vector2 result) {
-        return result.set(getX() + getWidth() / 2f, getY() + getHeight() / 2f);
+        return result.set(getCenterX(), getCenterY());
     }
 }

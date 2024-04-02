@@ -1,7 +1,6 @@
 package com.epicness.dimentio.game.stuff.bidimensional;
 
 import static com.badlogic.gdx.graphics.Color.CLEAR;
-import static com.epicness.dimentio.game.constants.GameConstants.WORLD_2D_BORDER_HEIGHT;
 import static com.epicness.dimentio.game.constants.GameConstants.WORLD_2D_WIDTH;
 import static com.epicness.fundamentals.constants.SharedConstants.CAMERA_HEIGHT;
 
@@ -18,7 +17,7 @@ import com.epicness.fundamentals.stuff.shapes.bidimensional.Drawable2D;
 import java.util.ArrayList;
 import java.util.List;
 
-public class World2D extends Drawable2D {
+public class World2D implements Drawable2D {
 
     private final Border border;
     private final BricksGame bricksGame;
@@ -51,7 +50,7 @@ public class World2D extends Drawable2D {
         foliage = new ArrayList<>();
 
         ending = new Sprited(assets.getEnding());
-        endingMirror= new Sprited(assets.getEnding());
+        endingMirror = new Sprited(assets.getEnding());
 
         cover = new Sprited(sharedAssets.getPixel());
         cover.setSize(WORLD_2D_WIDTH, CAMERA_HEIGHT);

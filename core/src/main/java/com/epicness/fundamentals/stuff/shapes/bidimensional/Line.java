@@ -49,8 +49,8 @@ public class Line implements Movable {
         angleDeg = degrees ? angle : (angle * MathUtils.radDeg);
         calculateB();
         this.thickness = thickness;
-        this.colorA = new Color(color);
-        this.colorB = new Color(color);
+        colorA = new Color(color);
+        colorB = new Color(color);
     }
 
     public Line(float x, float y, float length, float angle, boolean degrees) {
@@ -157,6 +157,10 @@ public class Line implements Movable {
 
     public void setColorA(Color color) {
         colorA.set(color);
+    }
+
+    public Color getColorB() {
+        return colorB;
     }
 
     public void setColorB(Color color) {

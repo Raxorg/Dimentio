@@ -2,6 +2,7 @@ package com.epicness.dimentio.game.stuff.bidimensional;
 
 import static com.badlogic.gdx.graphics.Color.CLEAR;
 import static com.badlogic.gdx.graphics.Color.GREEN;
+import static com.badlogic.gdx.graphics.g2d.Animation.PlayMode.LOOP;
 import static com.epicness.dimentio.game.constants.GameConstants.ENEMY_SIZE;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -17,7 +18,7 @@ public class Enemy implements Transformable {
     private final Circle bounds;
 
     public Enemy(Sprite[] frames) {
-        animation = new SpritedAnimation(0.2f, true, frames);
+        animation = new SpritedAnimation(0.2f, LOOP, frames);
         animation.setSize(ENEMY_SIZE);
         animation.setOriginCenter();
 

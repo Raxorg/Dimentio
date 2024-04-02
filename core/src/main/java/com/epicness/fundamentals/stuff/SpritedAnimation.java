@@ -10,25 +10,24 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.epicness.fundamentals.renderer.ShapeRendererPlus;
 import com.epicness.fundamentals.stuff.interfaces.Buttonable;
-import com.epicness.fundamentals.stuff.interfaces.Movable;
-import com.epicness.fundamentals.stuff.interfaces.Rotatable;
+import com.epicness.fundamentals.stuff.interfaces.Transformable;
 
-public class SpritedAnimation implements Buttonable, Movable, Rotatable {
+public class SpritedAnimation implements Buttonable, Transformable {
 
     private final Animation<Sprited> animation;
     private float time;
 
-    public SpritedAnimation(float frameDuration, boolean looping, Sprite... spriteFrames) {
+    public SpritedAnimation(float frameDuration, Animation.PlayMode playMode, Sprite... spriteFrames) {
         Sprited[] animationFrames = new Sprited[spriteFrames.length];
         for (int i = 0; i < spriteFrames.length; i++) {
             animationFrames[i] = new Sprited(spriteFrames[i]);
         }
         animation = new Animation<>(frameDuration, animationFrames);
-        animation.setPlayMode(looping ? LOOP : NORMAL);
+        animation.setPlayMode(playMode);
     }
 
     public SpritedAnimation(float frameDuration, Sprite... spriteFrames) {
-        this(frameDuration, false, spriteFrames);
+        this(frameDuration, NORMAL, spriteFrames);
     }
 
     public void draw(SpriteBatch spriteBatch) {
@@ -53,14 +52,6 @@ public class SpritedAnimation implements Buttonable, Movable, Rotatable {
         return animation.getKeyFrame(time).getX();
     }
 
-    public float getCenterX() {
-        return getX() + getWidth() / 2f;
-    }
-
-    public float getEndX() {
-        return getX() + getWidth();
-    }
-
     @Override
     public void translateX(float amount) {
         for (int i = 0; i < animation.getKeyFrames().length; i++) {
@@ -71,10 +62,6 @@ public class SpritedAnimation implements Buttonable, Movable, Rotatable {
     @Override
     public float getY() {
         return animation.getKeyFrame(time).getY();
-    }
-
-    public float getCenterY() {
-        return getY() + getHeight() / 2f;
     }
 
     @Override
@@ -96,40 +83,34 @@ public class SpritedAnimation implements Buttonable, Movable, Rotatable {
         }
     }
 
-    public void setOriginBasedPosition(float x, float y) {
+    @Override
+    public void stretchWidth(float amount) {
         for (int i = 0; i < animation.getKeyFrames().length; i++) {
-            animation.getKeyFrames()[i].setOriginBasedPosition(x, y);
+            animation.getKeyFrames()[i].stretchWidth(amount);
         }
     }
 
+    @Override
+    public void stretchHeight(float amount) {
+        for (int i = 0; i < animation.getKeyFrames().length; i++) {
+            animation.getKeyFrames()[i].stretchHeight(amount);
+        }
+    }
+
+    @Override
     public float getWidth() {
         return animation.getKeyFrame(time).getWidth();
     }
 
-    public void setWidth(float width) {
-        for (int i = 0; i < animation.getKeyFrames().length; i++) {
-            animation.getKeyFrames()[i].setWidth(width);
-        }
-    }
-
+    @Override
     public float getHeight() {
         return animation.getKeyFrame(time).getHeight();
     }
 
-    public void setHeight(float height) {
+    public void setOriginBasedPosition(float x, float y) {
         for (int i = 0; i < animation.getKeyFrames().length; i++) {
-            animation.getKeyFrames()[i].setHeight(height);
+            animation.getKeyFrames()[i].setOriginBasedPosition(x, y);
         }
-    }
-
-    public void setSize(float width, float height) {
-        for (int i = 0; i < animation.getKeyFrames().length; i++) {
-            animation.getKeyFrames()[i].setSize(width, height);
-        }
-    }
-
-    public void setSize(float size) {
-        setSize(size, size);
     }
 
     public void setOriginCenter() {
