@@ -26,7 +26,7 @@ public class PlaneProperties extends ModelProperties {
     public PlaneProperties(float width, float height) {
         this(
             width, height,
-            new Material(MATERIAL_ID, new BlendingAttribute(), FloatAttribute.createAlphaTest(0.5f), IntAttribute.createCullFace(GL20.GL_NONE)),
+            new Material(MATERIAL_ID, new BlendingAttribute(), FloatAttribute.createAlphaTest(0f), IntAttribute.createCullFace(GL20.GL_NONE)),
             LIGHTLESS_TEXTURED_ATTRIBUTES
         );
     }

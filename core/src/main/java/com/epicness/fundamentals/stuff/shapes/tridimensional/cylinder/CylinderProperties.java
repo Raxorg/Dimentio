@@ -34,7 +34,7 @@ public class CylinderProperties extends ModelProperties {
             width, height, depth,
             0f, angleTo,
             10,
-            new Material(MATERIAL_ID, new BlendingAttribute(), FloatAttribute.createAlphaTest(0.5f), IntAttribute.createCullFace(GL20.GL_NONE)),
+            new Material(MATERIAL_ID, new BlendingAttribute(), FloatAttribute.createAlphaTest(0f), IntAttribute.createCullFace(GL20.GL_NONE)),
             Constants3D.LIGHTLESS_TEXTURED_ATTRIBUTES
         );
     }
