@@ -13,25 +13,29 @@ import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
+import com.epicness.fundamentals.stuff.shapes.tridimensional.model.ModelCreator;
+import com.epicness.fundamentals.stuff.shapes.tridimensional.model.ModelProperties;
 
 public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperties> {
 
     protected final P properties;
-    private final ModelInstance modelInstance;
+    private final ModelInstance modelInstance, debugInstance;
     protected final Vector3[] rotationVertices;
     private final float[] plainVertices;
     private static final Quaternion QUATERNION_HELPER = new Quaternion();
     protected final Vector3 position;
     private final short[] indices;
-    protected final Line3D[] debugLines;
     private final TextureAttribute textureAttribute;
     private final ColorAttribute colorAttribute;
 
     public Shape3D(M modelCreator) {
         properties = modelCreator.properties;
-        Model model = modelCreator.build(properties);
+        Model model = modelCreator.model;
         modelInstance = new ModelInstance(model);
         Mesh mesh = model.meshes.first();
+
+        Model debugModel = modelCreator.debugModel;
+        debugInstance = new ModelInstance(debugModel);
 
         float[] verticesWithUV = new float[mesh.getNumVertices() * mesh.getVertexSize() / 4];
         mesh.getVertices(verticesWithUV);
@@ -50,16 +54,9 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
         position = new Vector3();
         indices = new short[mesh.getNumIndices()];
         mesh.getIndices(indices);
-        debugLines = new Line3D[rotationVertices.length];
-        for (int index = 0; index < debugLines.length; index++) {
-            debugLines[index] = new Line3D();
-        }
-        updateDebugLines();
         textureAttribute = new TextureAttribute(TextureAttribute.Diffuse);
         colorAttribute = new ColorAttribute(ColorAttribute.Diffuse);
     }
-
-    protected abstract void updateDebugLines();
 
     public final void draw(ModelBatch modelBatch) {
         modelBatch.render(modelInstance);
@@ -70,9 +67,7 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
     }
 
     public void drawDebug(ModelBatch modelBatch) {
-        for (int i = 0; i < debugLines.length; i++) {
-            debugLines[i].draw(modelBatch);
-        }
+        modelBatch.render(debugInstance);
     }
 
     public void setSprite(Sprite sprite) {
@@ -108,7 +103,7 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
             plainVertices[index + 1] += yAmount;
             plainVertices[index + 2] += zAmount;
         }
-        updateDebugLines();
+        debugInstance.transform.set(modelInstance.transform);
     }
 
     public final void translateX(float amount) {
@@ -139,7 +134,7 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
             plainVertices[index * 3 + 1] = rotationVertices[index].y + position.y;
             plainVertices[index * 3 + 2] = rotationVertices[index].z + position.z;
         }
-        updateDebugLines();
+        debugInstance.transform.set(modelInstance.transform);
     }
 
     public final void rotateX(float degrees) {

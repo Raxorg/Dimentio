@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.attributes.BlendingAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.FloatAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.IntAttribute;
-import com.epicness.fundamentals.stuff.shapes.tridimensional.ModelProperties;
+import com.epicness.fundamentals.stuff.shapes.tridimensional.model.ModelProperties;
 
 public class PlaneProperties extends ModelProperties {
 

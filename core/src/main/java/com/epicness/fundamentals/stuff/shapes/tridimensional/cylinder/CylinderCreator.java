@@ -1,7 +1,10 @@
 package com.epicness.fundamentals.stuff.shapes.tridimensional.cylinder;
 
+import static com.badlogic.gdx.graphics.VertexAttributes.Usage.Position;
+
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g3d.Model;
-import com.epicness.fundamentals.stuff.shapes.tridimensional.ModelCreator;
+import com.epicness.fundamentals.stuff.shapes.tridimensional.model.ModelCreator;
 
 public class CylinderCreator extends ModelCreator<CylinderProperties> {
 
@@ -19,6 +22,22 @@ public class CylinderCreator extends ModelCreator<CylinderProperties> {
             properties.material,
             properties.angleFrom,
             properties.angleTo
+        );
+    }
+
+    @Override
+    protected Model buildDebug(CylinderProperties properties) {
+        return modelBuilder.createCylinder(
+            properties.width,
+            properties.height,
+            properties.depth,
+            properties.divisions,
+            GL20.GL_LINES,
+            properties.material,
+            Position,
+            properties.angleFrom,
+            properties.angleTo,
+            false
         );
     }
 }
