@@ -31,17 +31,21 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
     public Shape3D(M modelCreator) {
         properties = modelCreator.properties;
         Model model = modelCreator.model;
-        modelInstance = new ModelInstance(model);
-        Mesh mesh = model.meshes.first();
-
         Model debugModel = modelCreator.debugModel;
+        int vertexSections = modelCreator.vertexSections;
+
+        modelInstance = new ModelInstance(model);
         debugInstance = new ModelInstance(debugModel);
 
+        Mesh mesh = model.meshes.first();
         float[] verticesWithUV = new float[mesh.getNumVertices() * mesh.getVertexSize() / 4];
         mesh.getVertices(verticesWithUV);
-        rotationVertices = new Vector3[verticesWithUV.length / 5];
+        indices = new short[mesh.getNumIndices()];
+        mesh.getIndices(indices);
+
+        rotationVertices = new Vector3[verticesWithUV.length / vertexSections];
         plainVertices = new float[rotationVertices.length * 3];
-        for (int index = 0, extraIndex = 0; index < verticesWithUV.length; index += 5, extraIndex++) {
+        for (int index = 0, extraIndex = 0; index < verticesWithUV.length; index += vertexSections, extraIndex++) {
             rotationVertices[extraIndex] = new Vector3(
                 verticesWithUV[index],
                 verticesWithUV[index + 1],
@@ -51,9 +55,8 @@ public abstract class Shape3D<M extends ModelCreator<P>, P extends ModelProperti
             plainVertices[extraIndex * 3 + 1] = rotationVertices[extraIndex].y;
             plainVertices[extraIndex * 3 + 2] = rotationVertices[extraIndex].z;
         }
+
         position = new Vector3();
-        indices = new short[mesh.getNumIndices()];
-        mesh.getIndices(indices);
         textureAttribute = new TextureAttribute(TextureAttribute.Diffuse);
         colorAttribute = new ColorAttribute(ColorAttribute.Diffuse);
     }

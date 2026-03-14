@@ -1,5 +1,7 @@
 package com.epicness.fundamentals.stuff.shapes.tridimensional.plane;
 
+import static com.epicness.fundamentals.constants.Constants3D.PLANE_VERTEX_SECTIONS;
+
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.epicness.fundamentals.stuff.shapes.tridimensional.model.ModelCreator;
@@ -7,7 +9,7 @@ import com.epicness.fundamentals.stuff.shapes.tridimensional.model.ModelCreator;
 public class PlaneCreator extends ModelCreator<PlaneProperties> {
 
     public PlaneCreator(float width, float height) {
-        super(new PlaneProperties(width, height));
+        super(new PlaneProperties(width, height), PLANE_VERTEX_SECTIONS);
     }
 
     @Override
