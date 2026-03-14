@@ -13,6 +13,7 @@ import com.epicness.dimentio.game.logic.enemies.EnemyMover;
 import com.epicness.dimentio.game.logic.enemies.EnemySpawner;
 import com.epicness.dimentio.game.logic.other.CameraHandler;
 import com.epicness.dimentio.game.logic.other.CoverHandler;
+import com.epicness.dimentio.game.logic.other.DebugToggler;
 import com.epicness.dimentio.game.logic.other.EndingHandler;
 import com.epicness.dimentio.game.logic.other.FoliageHandler;
 import com.epicness.dimentio.game.logic.other.MusicHandler;
@@ -66,6 +67,7 @@ public class GameLogic extends Logic {
         // Other
         registerHandler(cameraHandler = new CameraHandler());
         registerHandler(coverHandler = new CoverHandler());
+        registerHandler(new DebugToggler());
         registerHandler(endingHandler = new EndingHandler());
         registerHandler(foliageHandler = new FoliageHandler());
         registerHandler(musicHandler = new MusicHandler());

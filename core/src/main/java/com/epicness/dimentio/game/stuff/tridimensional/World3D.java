@@ -94,4 +94,13 @@ public class World3D {
             cylinderScreens.get(i).draw3D(modelBatch);
         }
     }
+
+    public void drawDebug3D(ModelBatch modelBatch) {
+        for (int i = 0; i < planeScreens.size(); i++) {
+            planeScreens.get(i).drawDebug3D(modelBatch);
+        }
+        for (int i = 0; i < cylinderScreens.size(); i++) {
+            cylinderScreens.get(i).drawDebug3D(modelBatch);
+        }
+    }
 }

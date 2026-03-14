@@ -8,6 +8,8 @@ import com.epicness.fundamentals.renderer.Renderer3D;
 
 public class GameRenderer extends Renderer3D<GameStuff> {
 
+    private boolean renderDebug;
+
     @Override
     public void render() {
         ScreenUtils.clear(CLEAR, true);
@@ -17,7 +19,8 @@ public class GameRenderer extends Renderer3D<GameStuff> {
         spriteBatch.end();
 
         modelBatch.begin(perspectiveCamera);
-        stuff.getWorld3D().draw3D(modelBatch);
+        if (renderDebug) stuff.getWorld3D().drawDebug3D(modelBatch);
+        else stuff.getWorld3D().draw3D(modelBatch);
         modelBatch.end();
 
         useStaticCamera();
@@ -26,5 +29,9 @@ public class GameRenderer extends Renderer3D<GameStuff> {
             stuff.getLives()[i].draw(spriteBatch);
         }
         spriteBatch.end();
+    }
+
+    public void toggleDebug() {
+        renderDebug = !renderDebug;
     }
 }
