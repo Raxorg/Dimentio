@@ -39,8 +39,8 @@ public class World3D {
             Screen3D<Plane> plane = new Screen3D<>(
                 new Plane(DECAL_SCREEN_WIDTH, DECAL_SCREEN_HEIGHT),
                 i * CAMERA_WIDTH, 0f,
-                CAMERA_WIDTH, CAMERA_HEIGHT);
-            plane.setScreen2D(world2D);
+                CAMERA_WIDTH, CAMERA_HEIGHT,
+                world2D);
             planeScreens.add(plane);
         }
         planeScreens.get(0).getShape().translateZ(DECAL_CUBE_XZ_RADIUS + CYLINDER_RADIUS);
@@ -60,8 +60,8 @@ public class World3D {
             Screen3D<Cylinder> cylinder = new Screen3D<>(
                 new Cylinder(CYLINDER_DIAMETER, DECAL_SCREEN_HEIGHT, CYLINDER_DIAMETER, 90f),
                 i * CAMERA_WIDTH, 0f,
-                CAMERA_WIDTH, CAMERA_HEIGHT);
-            cylinder.setScreen2D(world2D);
+                CAMERA_WIDTH, CAMERA_HEIGHT,
+                world2D);
             cylinderScreens.add(cylinder);
         }
         cylinderScreens.get(0).getShape().translate(DECAL_CUBE_XZ_RADIUS, 0f, DECAL_CUBE_XZ_RADIUS);

@@ -6,6 +6,7 @@ import static com.epicness.fundamentals.constants.Constants3D.MATERIAL_ID;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.attributes.BlendingAttribute;
+import com.badlogic.gdx.graphics.g3d.attributes.FloatAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.IntAttribute;
 import com.epicness.fundamentals.stuff.shapes.tridimensional.ModelProperties;
 
@@ -25,7 +26,7 @@ public class PlaneProperties extends ModelProperties {
     public PlaneProperties(float width, float height) {
         this(
             width, height,
-            new Material(MATERIAL_ID, new BlendingAttribute(), IntAttribute.createCullFace(GL20.GL_NONE)),
+            new Material(MATERIAL_ID, new BlendingAttribute(), FloatAttribute.createAlphaTest(0.5f), IntAttribute.createCullFace(GL20.GL_NONE)),
             LIGHTLESS_TEXTURED_ATTRIBUTES
         );
     }
